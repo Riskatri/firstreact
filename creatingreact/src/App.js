@@ -2,10 +2,12 @@ import React from "react";
 import "./App.css";
 import Logo from "./userProfile/avatar.js";
 import Profile from "./userProfile/profile.js";
+import Hook from "./components/hook";
 
 function App() {
   return (
     <div className="prof">
+      <Hook />
       <Logo />
       <Profile />
       <p>

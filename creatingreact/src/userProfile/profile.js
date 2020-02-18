@@ -1,6 +1,5 @@
 import React from "react";
-import { Button } from "reactstrap";
-import styles from "./profile.css";
+import "./profile.css";
 
 class profile extends React.Component {
   constructor(props) {
