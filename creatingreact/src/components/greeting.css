@@ -1,0 +1,8 @@
+.greet {
+  font-family: Arial;
+  text-align: left;
+  padding: 50px;
+  background-color: bisque;
+  font-size: 15px;
+  box-sizing: content-box;
+}

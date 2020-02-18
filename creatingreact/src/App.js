@@ -1,15 +1,18 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import { Container, Row, Col } from "reactstrap";
+import Logo from "./userProfile/avatar.js";
+import Profile from "./userProfile/profile.js";
 
 function App() {
   return (
-    <Container>
-      <Row>
-        <h1> Contoh dari react</h1>
-      </Row>
-    </Container>
+    <div className="prof">
+      <Logo />
+      <Profile />
+      <p>
+        Students improve their ability to engage in scientific practice when
+        exposed to introductory physics laboratories that encourage agency.
+      </p>
+    </div>
   );
 }
 
