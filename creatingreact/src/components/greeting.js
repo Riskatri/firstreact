@@ -1,6 +1,6 @@
 import React from "react";
 
-const Profile = props => (
+const greeting = props => (
   <div>
     <h4> {props.name} </h4>
     <h4> age : {props.age} </h4>
