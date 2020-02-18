@@ -12,7 +12,7 @@ class profile extends React.Component {
   render() {
     return (
       <div>
-        <h3> {this.state.name} </h3>
+        <h5> {this.state.name} </h5>
         <p> {this.state.jurusan}</p>
       </div>
     );

@@ -2,15 +2,19 @@
   font-family: Arial;
   text-align: center;
   padding: 30px;
-  background-color: bisque;
+  background-color: aliceblue;
   font-size: 15px;
   width: 300px;
   margin-top: 25px;
   margin-left: 545px;
+  margin-bottom: 20px;
 }
 .jam {
   text-align: center;
 }
 .hookk {
   margin-bottom: 20px;
+}
+.img {
+  margin-bottom: 30px;
 }
