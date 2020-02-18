@@ -4,7 +4,7 @@ import mainLogo from "./tokopedia.jpg";
 class Avatar extends React.Component {
   render() {
     return (
-      <div className="prof">
+      <div>
         <img src={mainLogo} alt="tokopedia" width="150px" />
       </div>
     );

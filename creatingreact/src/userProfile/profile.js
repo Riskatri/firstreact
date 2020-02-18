@@ -11,7 +11,7 @@ class profile extends React.Component {
   }
   render() {
     return (
-      <div className="prof">
+      <div>
         <h3> {this.state.name} </h3>
         <p> {this.state.jurusan}</p>
       </div>
