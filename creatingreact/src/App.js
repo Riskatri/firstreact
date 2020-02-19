@@ -6,21 +6,13 @@ import Profile from "./userProfile/profile";
 import About from "./components/about";
 // import Notfound from './components/NotFound';
 import Main from "./layout/main";
+import Index from "./index";
 
 const App = props => {
   return (
-    <Router>
-      <Switch>
-        <Main>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/home" component={Home} />
-            <Route path="/profile" component={Profile} />
-            <Route path="/about" component={About} />
-          </Switch>
-        </Main>
-      </Switch>
-    </Router>
+    <div>
+      <Index />
+    </div>
   );
 };
 export default App;
