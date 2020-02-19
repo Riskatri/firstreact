@@ -5,7 +5,8 @@ import Home from "./layout/home";
 import Profile from "./userProfile/profile";
 import About from "./layout/about";
 import Main from "./layout/main";
-import Form from "./components/controllform";
+import Form from "./components/from";
+import Register from "./validation/hook";
 const App = props => {
   return (
     <Router>
@@ -17,6 +18,7 @@ const App = props => {
             <Route path="/profile" component={Profile} />
             <Route path="/about" component={About} />
             <Route path="/form" component={Form} />
+            <Route path="/register" component={Register} />
           </Switch>
         </Main>
       </Switch>
