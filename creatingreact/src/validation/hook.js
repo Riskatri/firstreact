@@ -33,7 +33,7 @@ const Example = () => {
           <input
             type="email"
             ref={register({
-              required: "Required",
+              required: "must be in the form of mail",
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
                 message: "invalid email address"
