@@ -38,6 +38,11 @@ const Navigation = () => {
               About
             </NavLink>
           </NavItem>
+          <NavItem>
+            <NavLink to="/form" tag={RRNavLink}>
+              Form
+            </NavLink>
+          </NavItem>
           <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav caret>
               Options
