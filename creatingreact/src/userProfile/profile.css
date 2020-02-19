@@ -4,8 +4,8 @@
   padding: 10px;
   background-color: aliceblue;
   font-size: 15px;
-  width: 300px;
-  margin-left: 545px;
+  width: 400px;
+  margin-left: 500px;
 }
 .home {
   padding: 10px;
@@ -16,4 +16,10 @@
 }
 .tulis {
   margin-top: 30px;
+}
+.hook {
+  font-family: Arial;
+  padding: 10px;
+  background-color: aliceblue;
+  font-size: 15px;
 }
