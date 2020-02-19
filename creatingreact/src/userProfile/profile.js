@@ -1,5 +1,7 @@
 import React from "react";
 import "./profile.css";
+import Ava from "./avatar";
+import Bio from "./bio";
 
 class profile extends React.Component {
   constructor(props) {
@@ -11,9 +13,11 @@ class profile extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="prof">
+        <Ava />
         <h5> {this.state.name} </h5>
         <p> {this.state.jurusan}</p>
+        <Bio />
       </div>
     );
   }

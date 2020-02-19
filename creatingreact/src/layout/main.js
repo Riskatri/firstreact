@@ -5,7 +5,7 @@ const Main = props => {
   return (
     <>
       <Navigation />
-      <Container fluid={true} className="mt-2">
+      <Container fluid={true} className="justify-content-md-center">
         <Col>{props.children}</Col>
         <Col>Footer</Col>
       </Container>

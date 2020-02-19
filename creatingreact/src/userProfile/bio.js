@@ -10,7 +10,7 @@ class bio extends React.Component {
   }
   render() {
     return (
-      <div className="prof">
+      <div>
         <h3> Biografi </h3>
         <p> {this.state.name} </p>
         <p> Contact: {this.state.phone}</p>

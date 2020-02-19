@@ -3,8 +3,15 @@ import React from "react";
 class About extends React.Component {
   render = () => (
     <div className="container mt-2">
-      <h4> {this.props.match.params.number}</h4>
-      <h4>About pages with param number</h4>
+      <h4>Fun Physics</h4>
+      {/* <ul>
+        <li>
+          <a href="#"> Physics Scientist </a>
+        </li>
+        <li>
+          <a href="#"> Fact</a>
+        </li>
+      </ul> */}
     </div>
   );
 }

@@ -5,7 +5,7 @@ import "../userProfile/profile.css";
 class Avatar extends React.Component {
   render() {
     return (
-      <div className="img">
+      <div>
         <img src={mainLogo} alt="tokopedia" width="150px" />
       </div>
     );
