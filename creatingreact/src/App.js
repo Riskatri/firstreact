@@ -1,26 +1,13 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./layout/home";
-import Profile from "./userProfile/profile";
-import About from "./components/about";
-// import Notfound from './components/NotFound';
-import Main from "./layout/main";
+// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Form from "./components/controllform";
 
 const App = props => {
   return (
-    <Router>
-      <Switch>
-        <Main>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/home" component={Home} />
-            <Route path="/profile" component={Profile} />
-            <Route path="/about" component={About} />
-          </Switch>
-        </Main>
-      </Switch>
-    </Router>
+    <div>
+      <Form />
+    </div>
   );
 };
 export default App;
