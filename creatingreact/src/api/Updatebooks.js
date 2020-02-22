@@ -34,6 +34,7 @@ class Update extends React.Component {
     const id = this.props.match.params.id;
     await axios.put("http://127.0.0.1:4000/books/" + id, this.state);
     alert("Book Has been update!");
+    window.location.reload(false);
   };
   render() {
     const {

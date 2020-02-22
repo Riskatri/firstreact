@@ -3,9 +3,10 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 function App() {
-  // async function DeleteBook() {
-  //   await axios.delete(`http://127.0.0.1:4000/books/` + book.id);
-  // }
+  async function DeleteBook(id) {
+    await axios.delete(`http://127.0.0.1:4000/books/${id}`);
+    window.location.reload(false);
+  }
   const url = "http://127.0.0.1:4000/books";
   const [data, setData] = useState({ data: [] });
 
@@ -28,9 +29,14 @@ function App() {
             <Link to={"/update/books/" + book.id}>
               <button className="button muted-button">Edit</button>
             </Link>
-            <Link to={"/delete/books/" + book.id}>
-              <button className="button muted-button">Delete</button>
-            </Link>
+            {/* <Link to={"/delete/books/" + book.id}> */}
+            <button
+              className="button muted-button"
+              onClick={() => DeleteBook(book.id)}
+            >
+              Delete
+            </button>
+            {/* </Link> */}
           </td>
         </tr>
       );

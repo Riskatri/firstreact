@@ -20,6 +20,7 @@ class PostBook extends React.Component {
     event.preventDefault();
     await axios.post("http://127.0.0.1:4000/books", this.state);
     alert("Data Insert Succesfully!");
+    window.location.reload(false);
   };
   render() {
     const {

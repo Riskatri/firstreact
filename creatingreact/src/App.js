@@ -6,7 +6,7 @@ import ID from "./api/getid";
 import GET from "./api/book";
 // import Books from "./api/GetUsingHook";
 // import Update from "./api/Updatebooks";
-import Delete from "./api/Deletebooks";
+// import Delete from "./api/Deletebooks";
 import Update from "./api/Updatebooks";
 import Post from "./api/Postbooks";
 
@@ -20,7 +20,7 @@ const App = props => {
             <Route path="/get/books/:id" component={ID} />
             <Route path="/post/books" component={Post} />
             <Route path="/update/books/:id" component={Update} />
-            <Route path="/delete/books/:id" component={Delete} />
+            {/* <Route path="/delete/books/:id" component={Delete} /> */}
           </Switch>
         </Main>
       </Switch>
