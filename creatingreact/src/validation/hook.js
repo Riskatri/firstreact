@@ -20,12 +20,13 @@ const Example = () => {
             name="name"
             type="text"
             ref={register({
-              required: true
+              required: "Nama harus diisi",
+              message: "isi nama"
             })}
             placeholder="Name"
             class="form-control"
           />
-          <div class="valid-feedback">Looks good!</div>
+          {errors.name && errors.name.message}
         </div>
 
         <div class="col-md-4 mb-3">
@@ -33,7 +34,7 @@ const Example = () => {
           <input
             type="email"
             ref={register({
-              required: "must be in the form of mail",
+              required: "email harus diisi",
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
                 message: "invalid email address"
