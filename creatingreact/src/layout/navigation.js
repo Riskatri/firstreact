@@ -7,58 +7,43 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
+  NavLink
 } from "reactstrap";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   return (
-    <Navbar color="light" light expand="md">
-      <NavbarBrand href={"/"}>reactstrap</NavbarBrand>
+    <Navbar color="lnavbar navbar-dark bg-dark" light expand="md">
+      <NavbarBrand href={"/"}>Book</NavbarBrand>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
         <Nav className="mr-auto" navbar>
           <NavItem>
-            <NavLink to="/home" tag={RRNavLink}>
-              Home
+            <NavLink to="/get/books" tag={RRNavLink}>
+              Get Book
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink to="/profile" tag={RRNavLink}>
-              Profile
+            <NavLink to="/get/books/:id" tag={RRNavLink}>
+              Get Book By Id
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink to="/about" tag={RRNavLink}>
-              About
+            <NavLink to="/post/books" tag={RRNavLink}>
+              Post Book
+            </NavLink>
+          </NavItem>
+          {/* <NavItem>
+            <NavLink to="/update/books/:id" tag={RRNavLink}>
+              Update Book
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink to="/form" tag={RRNavLink}>
-              Form
+            <NavLink to="/delete/books/:id" tag={RRNavLink}>
+              Delete Book
             </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/register" tag={RRNavLink}>
-              Signup
-            </NavLink>
-          </NavItem>
-          <UncontrolledDropdown nav inNavbar>
-            <DropdownToggle nav caret>
-              Options
-            </DropdownToggle>
-            <DropdownMenu right>
-              <DropdownItem>Option 1</DropdownItem>
-              <DropdownItem>Option 2</DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem>Reset</DropdownItem>
-            </DropdownMenu>
-          </UncontrolledDropdown>
+          </NavItem> */}
         </Nav>
       </Collapse>
     </Navbar>

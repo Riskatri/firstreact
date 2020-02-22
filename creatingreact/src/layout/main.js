@@ -7,7 +7,9 @@ const Main = props => {
       <Navigation />
       <Container fluid={true} className="mt-2">
         <Col>{props.children}</Col>
-        <Col>Footer</Col>
+        <Col className="home">
+          <strong>Happy Code </strong>
+        </Col>
       </Container>
     </>
   );
