@@ -5,8 +5,10 @@ import { Link } from "react-router-dom";
 function App() {
   async function DeleteBook(id) {
     await axios.delete(`http://127.0.0.1:4000/books/${id}`);
+    alert("Book Has been delete");
     window.location.reload(false);
   }
+
   const url = "http://127.0.0.1:4000/books";
   const [data, setData] = useState({ data: [] });
 
@@ -43,7 +45,7 @@ function App() {
     });
   };
   return (
-    <div className="container">
+    <div className="container mt-5">
       <h1 id="title">List Books</h1>
       <table className="table">
         <thead className="thead-dark">
