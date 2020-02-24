@@ -34,6 +34,11 @@ const Navigation = () => {
               Post Book
             </NavLink>
           </NavItem>
+          <NavItem>
+            <NavLink to="/register" tag={RRNavLink}>
+              Register
+            </NavLink>
+          </NavItem>
           {/* <NavItem>
             <NavLink to="/update/books/:id" tag={RRNavLink}>
               Update Book
