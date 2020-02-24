@@ -1,7 +1,7 @@
 import React from "react";
 import useGlobal from "../store";
 const Counters = () => {
-  const [globalState, globalActions] = useGlobal();
+  const [globalState] = useGlobal();
   const { requests, success, fail } = globalState.counters;
   return (
     <p>

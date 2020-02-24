@@ -13,7 +13,7 @@ const mapRepos = repos => {
   ));
 };
 const Repos = () => {
-  const [globalState, globalActions] = useGlobal();
+  const [globalState] = useGlobal();
   const { status, repos } = globalState;
   return (
     <>

@@ -1,7 +1,7 @@
 import React from "react";
 import useGlobal from "../store";
 const Counter = () => {
-  const [globalState, globalActions] = useGlobal();
+  const [globalActions] = useGlobal();
   const searchSubmit = e => {
     e.preventDefault();
     const username = e.target.username.value;
