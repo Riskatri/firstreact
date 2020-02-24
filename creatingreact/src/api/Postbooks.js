@@ -42,7 +42,7 @@ class PostBook extends React.Component {
               <div class="card-body">
                 <form onSubmit={this.handlerSubmit}>
                   <div class="form-group">
-                    <label>Book </label>
+                    <label>Book id </label>
                     <input
                       type="number"
                       value={id}

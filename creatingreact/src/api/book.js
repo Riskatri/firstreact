@@ -56,7 +56,7 @@ function App() {
             <th>published_date</th>
             <th>pages</th>
             <th>language</th>
-            <th>published_id</th>
+            <th>publisher_id</th>
             <th>action</th>
           </tr>
         </thead>
