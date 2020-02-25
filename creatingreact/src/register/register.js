@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 function Register() {
   const [form, setValues] = useState({
@@ -9,7 +10,9 @@ function Register() {
     password: "",
     roles: ["ADMIN"]
   });
-
+  const [status, setStatus] = useState({
+    isRedirect: false
+  });
   const handleSubmit = async e => {
     e.preventDefault();
     try {
@@ -22,8 +25,9 @@ function Register() {
       });
 
       console.log(result.data);
-      if (result.status === 200) {
+      if (result.status === 201) {
         alert("register sucessfuly!");
+        setStatus({ isRedirect: true });
       }
     } catch (err) {
       console.log(err);
@@ -35,11 +39,13 @@ function Register() {
       [e.target.name]: e.target.value
     });
   };
-
+  if (status.isRedirect === true) {
+    return <Redirect to="/login" />;
+  }
   return (
     <div className="prof">
-      <div class="card-header bg-dark text-white">Register</div>
-      <div class="card-body">
+      <div className="card-header bg-dark text-white">Register</div>
+      <div className="card-body">
         <form onSubmit={handleSubmit}>
           <div class="form-group">
             <label>Name </label>
@@ -89,7 +95,11 @@ function Register() {
               placeholder="password"
             />
           </div>
-          <button type="submit" className="btn btn-dark">
+          <button
+            type="submit"
+            className="btn btn-dark"
+            onSubmit={handleSubmit}
+          >
             Submit
           </button>
         </form>

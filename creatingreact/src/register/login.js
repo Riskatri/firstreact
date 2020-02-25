@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import createPersistedState from "@plq/use-persisted-state";
+import { Redirect } from "react-router-dom";
 
 function Login() {
   const [usePersistedState] = createPersistedState(
@@ -11,7 +12,9 @@ function Login() {
     username: "",
     password: ""
   });
-
+  const [status, setStatus] = useState({
+    isRedirect: false
+  });
   const handleSubmit = async e => {
     e.preventDefault();
     try {
@@ -23,8 +26,7 @@ function Login() {
       console.log(result.data.accessToken);
       if (result.status === 200) {
         alert("login sucessfuly!");
-      } else {
-        throw new Error("Failed to login!");
+        setStatus({ isRedirect: true });
       }
     } catch (err) {
       console.log(err);
@@ -36,11 +38,15 @@ function Login() {
       [e.target.name]: e.target.value
     });
   };
+
   const [token, getToken] = usePersistedState("token", "");
+  if (status.isRedirect === true) {
+    return <Redirect to="/post/books" />;
+  }
   return (
     <div className="prof">
-      <div class="card-header bg-dark text-white">Login</div>
-      <div class="card-body">
+      <div className="card-header bg-dark text-white">Login</div>
+      <div className="card-body">
         <form onSubmit={handleSubmit}>
           <div class="form-group">
             <label>Username </label>
@@ -66,7 +72,11 @@ function Login() {
             />
           </div>
 
-          <button type="submit" className="btn btn-dark">
+          <button
+            type="submit"
+            className="btn btn-dark"
+            onSubmit={handleSubmit}
+          >
             Submit
           </button>
         </form>

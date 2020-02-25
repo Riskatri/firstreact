@@ -20,21 +20,6 @@ const Navigation = () => {
       <Collapse isOpen={isOpen} navbar>
         <Nav className="mr-auto" navbar>
           <NavItem>
-            <NavLink to="/get/books" tag={RRNavLink}>
-              Get Book
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/get/books/:id" tag={RRNavLink}>
-              Get Book By Id
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/post/books" tag={RRNavLink}>
-              Post Book
-            </NavLink>
-          </NavItem>
-          <NavItem>
             <NavLink to="/register" tag={RRNavLink}>
               Register
             </NavLink>
@@ -44,6 +29,16 @@ const Navigation = () => {
               Login
             </NavLink>
           </NavItem>
+          {/* <NavItem>
+            <NavLink to="/get/books" tag={RRNavLink}>
+              Get Book
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to="/post/books" tag={RRNavLink}>
+              Post Book
+            </NavLink>
+          </NavItem> */}
           {/* <NavItem>
             <NavLink to="/update/books/:id" tag={RRNavLink}>
               Update Book

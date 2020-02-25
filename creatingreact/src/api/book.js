@@ -21,13 +21,13 @@ function App() {
     return data.data.map(book => {
       return (
         <tr>
-          <td>{book.id}</td>
+          {/* <td>{book.id}</td> */}
           <td>{book.title}</td>
           <td>{book.author}</td>
           <td>{book.published_date}</td>
           <td>{book.pages}</td>
           <td>{book.language}</td>
-          <td>{book.published_id}</td>
+          <td>{book.publisher_id}</td>
           <td>
             <Link to={"/update/books/" + book.id}>
               <button className="button muted-button">Edit</button>

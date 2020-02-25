@@ -10,7 +10,7 @@ class Update extends React.Component {
     published_date: "",
     pages: "",
     laguage: "",
-    published_id: ""
+    publisher_id: ""
   };
   componentDidMount = async () => {
     const id = this.props.match.params.id;
@@ -22,7 +22,7 @@ class Update extends React.Component {
       published_date: result.data.published_date,
       pages: result.data.pages,
       language: result.data.language,
-      published_id: result.data.published_id
+      publisher_id: result.data.publisher_id
     });
   };
   handlerChange = e => {
@@ -43,7 +43,7 @@ class Update extends React.Component {
       published_date,
       pages,
       language,
-      published_id
+      publisher_id
     } = this.state;
 
     return (
@@ -127,7 +127,7 @@ class Update extends React.Component {
                   <label>Publisher_id </label>
 
                   <input
-                    value={published_id}
+                    value={publisher_id}
                     type="text"
                     name="published_id"
                     onChange={this.handlerChange}

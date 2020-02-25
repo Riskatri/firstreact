@@ -10,7 +10,7 @@ class PostBook extends React.Component {
     published_date: "",
     pages: "",
     laguage: "",
-    published_id: ""
+    publisher_id: ""
   };
   handlerChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -18,7 +18,7 @@ class PostBook extends React.Component {
 
   handlerSubmit = async event => {
     event.preventDefault();
-    await axios.post("http://127.0.0.1:4000/books", this.state);
+    await axios.post("http://127.0.0.1:8000/books", this.state);
     alert("Data Insert Succesfully!");
     window.location.reload(false);
   };
@@ -30,7 +30,7 @@ class PostBook extends React.Component {
       published_date,
       pages,
       language,
-      published_id
+      publisher_id
     } = this.state;
 
     return (
@@ -115,7 +115,7 @@ class PostBook extends React.Component {
                     <label>Publisher_id </label>
 
                     <input
-                      value={published_id}
+                      value={publisher_id}
                       type="text"
                       name="published_id"
                       onChange={this.handlerChange}
