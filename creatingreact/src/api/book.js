@@ -4,17 +4,18 @@ import { Link } from "react-router-dom";
 
 function App() {
   async function DeleteBook(id) {
-    await axios.delete(`http://127.0.0.1:4000/books/${id}`);
+    await axios.delete(`http://127.0.0.1:8000/books/${id}`);
     alert("Book Has been delete");
     window.location.reload(false);
   }
 
-  const url = "http://127.0.0.1:4000/books";
+  const url = "http://127.0.0.1:8000/books";
   const [data, setData] = useState({ data: [] });
 
   useEffect(() => {
     axios.get(url).then(json => setData(json.data));
   }, []);
+
   console.log(data);
   const renderTable = () => {
     return data.data.map(book => {

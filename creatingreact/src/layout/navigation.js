@@ -39,6 +39,11 @@ const Navigation = () => {
               Register
             </NavLink>
           </NavItem>
+          <NavItem>
+            <NavLink to="/login" tag={RRNavLink}>
+              Login
+            </NavLink>
+          </NavItem>
           {/* <NavItem>
             <NavLink to="/update/books/:id" tag={RRNavLink}>
               Update Book

@@ -1,29 +1,30 @@
 import React, { useState } from "react";
 import axios from "axios";
+import createPersistedState from "@plq/use-persisted-state";
 
-function Register() {
+function Login() {
+  const [usePersistedState] = createPersistedState(
+    "token",
+    window.sessionStorage
+  );
   const [form, setValues] = useState({
-    name: "",
     username: "",
-    email: "",
-    password: "",
-    roles: ["ADMIN"]
+    password: ""
   });
 
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const result = await axios.post("http://127.0.0.1:8000/register", {
-        name: form.name,
+      const result = await axios.post("http://127.0.0.1:8000/login", {
         username: form.username,
-        email: form.email,
-        password: form.password,
-        roles: form.roles
+        password: form.password
       });
-
-      console.log(result.data);
+      getToken(result.data);
+      console.log(result.data.accessToken);
       if (result.status === 200) {
-        alert("register sucessfuly!");
+        alert("login sucessfuly!");
+      } else {
+        throw new Error("Failed to login!");
       }
     } catch (err) {
       console.log(err);
@@ -35,23 +36,12 @@ function Register() {
       [e.target.name]: e.target.value
     });
   };
-
+  const [token, getToken] = usePersistedState("token", "");
   return (
     <div className="prof">
-      <div class="card-header bg-dark text-white">Register</div>
+      <div class="card-header bg-dark text-white">Login</div>
       <div class="card-body">
         <form onSubmit={handleSubmit}>
-          <div class="form-group">
-            <label>Name </label>
-            <input
-              value={form.name}
-              type="text"
-              name="name"
-              onChange={handleChange}
-              class="form-control text-dark"
-              placeholder="name"
-            />
-          </div>
           <div class="form-group">
             <label>Username </label>
             <input
@@ -62,20 +52,6 @@ function Register() {
               class="form-control"
               placeholder="username"
             />
-          </div>
-          <div class="form-group">
-            <label>Email </label>
-            <input
-              value={form.email}
-              type="email"
-              name="email"
-              onChange={handleChange}
-              class="form-control"
-              placeholder="email address"
-            />
-            <small id="emailHelp" class="text-Dark">
-              We'll never share your email with anyone else.
-            </small>
           </div>
           <div class="form-group">
             <label>Password </label>
@@ -89,6 +65,7 @@ function Register() {
               placeholder="password"
             />
           </div>
+
           <button type="submit" className="btn btn-dark">
             Submit
           </button>
@@ -97,4 +74,4 @@ function Register() {
     </div>
   );
 }
-export default Register;
+export default Login;

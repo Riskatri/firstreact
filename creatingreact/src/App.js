@@ -21,13 +21,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Main from "./layout/main";
 import ID from "./api/getid";
 import GET from "./api/book";
-// import Books from "./api/GetUsingHook";
-// import Update from "./api/Updatebooks";
-// import Delete from "./api/Deletebooks";
 import Update from "./api/Updatebooks";
 import Post from "./api/Postbooks";
 import Register from "./register/register";
-
+import Login from "./register/login";
 const App = props => {
   return (
     <Router>
@@ -40,6 +37,7 @@ const App = props => {
             <Route path="/update/books/:id" component={Update} />
             {/* <Route path="/delete/books/:id" component={Delete} /> */}
             <Route path="/register" component={Register} />
+            <Route path="/login" component={Login} />
           </Switch>
         </Main>
       </Switch>
