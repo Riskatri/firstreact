@@ -8,11 +8,13 @@ function Register() {
     username: "",
     email: "",
     password: "",
-    roles: ["ADMIN"]
+    roles: ["USER"]
   });
+
   const [status, setStatus] = useState({
-    isRedirect: false
+    redirect: false
   });
+
   const handleSubmit = async e => {
     e.preventDefault();
     try {
@@ -27,7 +29,7 @@ function Register() {
       console.log(result.data);
       if (result.status === 201) {
         alert("register sucessfuly!");
-        setStatus({ isRedirect: true });
+        setStatus({ redirect: true });
       }
     } catch (err) {
       console.log(err);
@@ -39,7 +41,7 @@ function Register() {
       [e.target.name]: e.target.value
     });
   };
-  if (status.isRedirect === true) {
+  if (status.redirect === true) {
     return <Redirect to="/login" />;
   }
   return (

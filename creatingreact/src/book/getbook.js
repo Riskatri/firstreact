@@ -1,24 +1,53 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-function App() {
-  async function DeleteBook(id) {
-    await axios.delete(`http://127.0.0.1:8000/books/${id}`);
-    alert("Book Has been delete");
+function BookHook() {
+  const [data, setData] = useState({ book: [] });
+
+  function DeleteBook(id) {
+    const token = JSON.parse(
+      sessionStorage.getItem("persisted_state_hook:token")
+    );
+    axios({
+      method: "delete",
+      url: `http://127.0.0.1:8000/books/${id}`,
+      headers: {
+        Authorization: token.token.accessToken
+      },
+      data: data
+    });
     window.location.reload(false);
   }
 
-  const url = "http://127.0.0.1:8000/books";
-  const [data, setData] = useState({ data: [] });
-
-  useEffect(() => {
-    axios.get(url).then(json => setData(json.data));
+  const token = JSON.parse(
+    sessionStorage.getItem("persisted_state_hook:token")
+  );
+  useMemo(() => {
+    const fetchData = async () => {
+      const result = await axios({
+        method: "get",
+        url: "http://127.0.0.1:8000/books",
+        headers: {
+          Authorization: token.token.accessToken
+        }
+      });
+      setData(result.data);
+    };
+    try {
+      fetchData();
+    } catch (err) {
+      alert(err);
+    }
+    // console.log(data);
   }, []);
-
+  if (!token) {
+    return <Redirect to="/login" />;
+  }
   console.log(data);
   const renderTable = () => {
-    return data.data.map(book => {
+    return data.book.map(book => {
       return (
         <tr>
           <td>{book.id}</td>
@@ -32,14 +61,13 @@ function App() {
             <Link to={"/update/books/" + book.id}>
               <button className="button muted-button">Edit</button>
             </Link>
-            {/* <Link to={"/delete/books/" + book.id}> */}
+
             <button
               className="button muted-button"
               onClick={() => DeleteBook(book.id)}
             >
               Delete
             </button>
-            {/* </Link> */}
           </td>
         </tr>
       );
@@ -66,4 +94,4 @@ function App() {
     </div>
   );
 }
-export default App;
+export default BookHook;

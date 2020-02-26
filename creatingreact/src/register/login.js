@@ -8,13 +8,16 @@ function Login() {
     "token",
     window.sessionStorage
   );
+
   const [form, setValues] = useState({
     username: "",
     password: ""
   });
-  const [status, setStatus] = useState({
-    isRedirect: false
+  const [token, getToken] = usePersistedState("token", "");
+  const [role, setRole] = useState({
+    redirect: true
   });
+
   const handleSubmit = async e => {
     e.preventDefault();
     try {
@@ -23,10 +26,11 @@ function Login() {
         password: form.password
       });
       getToken(result.data);
+      setRole(result.data.Role);
       console.log(result.data.accessToken);
       if (result.status === 200) {
         alert("login sucessfuly!");
-        setStatus({ isRedirect: true });
+        // setStatus({ redirect: true });
       }
     } catch (err) {
       console.log(err);
@@ -39,49 +43,51 @@ function Login() {
     });
   };
 
-  const [token, getToken] = usePersistedState("token", "");
-  if (status.isRedirect === true) {
+  if (role === "ADMIN") {
     return <Redirect to="/post/books" />;
-  }
-  return (
-    <div className="prof">
-      <div className="card-header bg-dark text-white">Login</div>
-      <div className="card-body">
-        <form onSubmit={handleSubmit}>
-          <div class="form-group">
-            <label>Username </label>
-            <input
-              value={form.username}
-              type="text"
-              name="username"
-              onChange={handleChange}
-              class="form-control"
-              placeholder="username"
-            />
-          </div>
-          <div class="form-group">
-            <label>Password </label>
+  } else if (role === "USER") {
+    return <Redirect to="/get/books" />;
+  } else {
+    return (
+      <div className="prof">
+        <div className="card-header bg-dark text-white">Login</div>
+        <div className="card-body">
+          <form onSubmit={handleSubmit}>
+            <div class="form-group">
+              <label>Username </label>
+              <input
+                value={form.username}
+                type="text"
+                name="username"
+                onChange={handleChange}
+                class="form-control"
+                placeholder="username"
+              />
+            </div>
+            <div class="form-group">
+              <label>Password </label>
 
-            <input
-              value={form.password}
-              type="password"
-              name="password"
-              onChange={handleChange}
-              class="form-control"
-              placeholder="password"
-            />
-          </div>
+              <input
+                value={form.password}
+                type="password"
+                name="password"
+                onChange={handleChange}
+                class="form-control"
+                placeholder="password"
+              />
+            </div>
 
-          <button
-            type="submit"
-            className="btn btn-dark"
-            onSubmit={handleSubmit}
-          >
-            Submit
-          </button>
-        </form>
+            <button
+              type="submit"
+              className="btn btn-dark"
+              onSubmit={handleSubmit}
+            >
+              Submit
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 export default Login;
