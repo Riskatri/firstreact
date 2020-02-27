@@ -18,6 +18,7 @@ function BookHook() {
       },
       data: data
     });
+    alert("Book has been delete");
     window.location.reload(false);
   }
 
@@ -47,9 +48,9 @@ function BookHook() {
   }
   console.log(data);
   const renderTable = () => {
-    return data.book.map(book => {
+    return data.book.map((book, id) => {
       return (
-        <tr>
+        <tr key={id}>
           <td>{book.id}</td>
           <td>{book.title}</td>
           <td>{book.author}</td>
@@ -59,11 +60,11 @@ function BookHook() {
           <td>{book.publisher_id}</td>
           <td>
             <Link to={"/update/books/" + book.id}>
-              <button className="button muted-button">Edit</button>
+              <button className="button bg-primary">Edit</button>
             </Link>
 
             <button
-              className="button muted-button"
+              className="button bg-danger"
               onClick={() => DeleteBook(book.id)}
             >
               Delete
@@ -79,14 +80,14 @@ function BookHook() {
       <table className="table">
         <thead className="thead-dark">
           <tr>
-            <th>id</th>
-            <th>title</th>
-            <th>author</th>
-            <th>published_date</th>
-            <th>pages</th>
-            <th>language</th>
-            <th>publisher_id</th>
-            <th>action</th>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Published Date</th>
+            <th>Pages</th>
+            <th>Language</th>
+            <th>Publisher Id</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>{renderTable()}</tbody>

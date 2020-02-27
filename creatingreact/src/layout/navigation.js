@@ -65,6 +65,7 @@ function Navigation() {
                 Users
               </NavLink>
             </NavItem>
+
             <NavItem>
               <NavLink onClick={logout} to="/login" tag={RRNavLink}>
                 Logout
@@ -84,6 +85,11 @@ function Navigation() {
             <NavItem>
               <NavLink to="/get/books" tag={RRNavLink}>
                 List Books
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink to="/orders" tag={RRNavLink}>
+                List orderan
               </NavLink>
             </NavItem>
             <NavItem>

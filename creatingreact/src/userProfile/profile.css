@@ -5,6 +5,7 @@
   font-size: 15px;
   margin-left: 400px;
   width: 500px;
+  text-align: center;
 }
 .home {
   padding: 10px;
@@ -13,7 +14,8 @@
   margin-top: 30px;
 }
 .tulis {
-  text-align: right;
+  text-align: center;
+  margin-left: 50px;
 }
 .hook {
   font-family: Arial;

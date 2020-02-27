@@ -8,7 +8,7 @@ const Main = props => {
       <Container fluid={true} className="mt-2">
         <Col>{props.children}</Col>
         <Col className="home">
-          <strong>Happy Code </strong>
+          <strong> &copy;riskatri_h </strong>
         </Col>
       </Container>
     </>

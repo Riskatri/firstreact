@@ -7,7 +7,7 @@ function OrderHook(props) {
   const token = JSON.parse(
     sessionStorage.getItem("persisted_state_hook:token")
   );
-  const id = props.match.params.id;
+  const id = token.token.id;
   const urls = `http://127.0.0.1:8000/orders/` + id;
   useMemo(() => {
     const fetchData = async () => {
@@ -48,7 +48,7 @@ function OrderHook(props) {
     });
   };
   return (
-    <div className="tulis">
+    <div>
       <h1 id="title">List order</h1>
       <table className="table">
         <thead className="thead-dark">

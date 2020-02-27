@@ -7,21 +7,29 @@ function BookHook() {
   const token = JSON.parse(
     sessionStorage.getItem("persisted_state_hook:token")
   );
-  function getOrder(id) {
-    axios({
-      method: "post",
-      url: `http://127.0.0.1:8000/orders/${id}`,
-      headers: {
-        Authorization: token.token.accessToken
-      },
-      data: {
-        userId: id,
-        bookId: id
-      }
-    });
+  async function getOrder(id) {
+    const token = JSON.parse(
+      sessionStorage.getItem("persisted_state_hook:token")
+    );
+    try {
+      await axios({
+        method: "post",
+        url: `http://127.0.0.1:8000/orders/${id}`,
+        headers: {
+          Authorization: token.token.accessToken
+        },
+        data: {
+          userId: token.token.id,
+          bookId: id
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
     alert("Order Successfuly");
     // window.location.reload(false);
   }
+  console.log(data);
   useMemo(() => {
     const fetchData = async () => {
       const result = await axios({
@@ -45,9 +53,9 @@ function BookHook() {
   }
   console.log(data);
   const renderTable = () => {
-    return data.book.map(book => {
+    return data.book.map((book, id) => {
       return (
-        <tr>
+        <tr key={id}>
           <td>{book.id}</td>
           <td>{book.title}</td>
           <td>{book.author}</td>
@@ -57,10 +65,10 @@ function BookHook() {
           <td>{book.publisher_id}</td>
           <td>
             <button
-              className="button muted-button"
+              className="button bg-primary"
               onClick={() => getOrder(book.id)}
             >
-              Order
+              Order buku
             </button>
           </td>
         </tr>
@@ -74,13 +82,13 @@ function BookHook() {
         <thead className="thead-dark">
           <tr>
             <th>id</th>
-            <th>title</th>
-            <th>author</th>
-            <th>published_date</th>
-            <th>pages</th>
-            <th>language</th>
-            <th>publisher_id</th>
-            <th>action</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Published Date</th>
+            <th>Pages</th>
+            <th>Language</th>
+            <th>Publisher_id</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>{renderTable()}</tbody>
