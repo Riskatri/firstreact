@@ -83,9 +83,9 @@ class Update extends React.Component {
     return (
       <div className="prof">
         <div className="container">
-          <div class="card-header bg-secondary">
-            <div class="card-header bg-dark text-white">Update Book</div>
-            <div class="card-body">
+          <div className="card-header bg-secondary">
+            <div className="card-header bg-dark text-white">Update Book</div>
+            <div className="card-body">
               <form onSubmit={this.handlerSubmit}>
                 <div class="form-group">
                   <label>Book Title </label>

@@ -51,9 +51,9 @@ class PostBook extends React.Component {
       <div>
         <div className="prof">
           <div className="container mt-5">
-            <div class="card-header bg-secondary">
-              <div class="card-header bg-dark text-white">Insert Book</div>
-              <div class="card-body">
+            <div className="card-header bg-secondary">
+              <div className="card-header bg-dark text-white">Insert Book</div>
+              <div className="card-body">
                 <form onSubmit={this.handlerSubmit}>
                   <div class="form-group">
                     <label>Book Title </label>

@@ -48,7 +48,7 @@ function OrderHook(props) {
     });
   };
   return (
-    <div>
+    <div className="container mt-5">
       <h1 id="title">List order</h1>
       <table className="table">
         <thead className="thead-dark">
