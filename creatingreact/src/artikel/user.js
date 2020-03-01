@@ -12,7 +12,7 @@ function User() {
     const fetchData = async () => {
       const result = await axios({
         method: "get",
-        url: "http://127.0.0.1:8015/users",
+        url: "http://127.0.0.1:7000/users",
         headers: {
           Authorization: token.token.accessToken
         },
@@ -39,10 +39,11 @@ function User() {
           <td>{user.id}</td>
           <td>{user.username}</td>
           <td>{user.email}</td>
-          <td>{user.roles[0].name}</td>
+          <td>{user.admin}</td>
+          <td>{user.status}</td>
           <td>
-            <Link to={"/orders/" + user.id}>
-              <button className="button bg-primary">Orderan</button>
+            <Link to={"/update/users/" + user.id}>
+              <button className="button bg-primary">Edit</button>
             </Link>
           </td>
         </tr>
@@ -52,17 +53,17 @@ function User() {
   return (
     <div>
       <h3 id="title">Daftar Pengunjung</h3>
-      <div className="prof">
-        <table className="table">
-          <thead className="thead-dark">
-            <tr>
-              <th>ID</th>
-              <th>Username</th>
-              <th>Email</th>
-              <th>Role</th>
-              <th>Action</th>
-            </tr>
-          </thead>
+      <div className="container">
+        <table className="table table-striped table-dark">
+          <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>status admin</th>
+            <th>status</th>
+            <th>Action</th>
+          </tr>
+
           <tbody>{renderTable()}</tbody>
         </table>
       </div>

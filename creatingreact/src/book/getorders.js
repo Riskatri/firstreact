@@ -8,7 +8,7 @@ function OrderHook(props) {
     sessionStorage.getItem("persisted_state_hook:token")
   );
   const id = props.match.params.id;
-  const urls = `http://127.0.0.1:8000/orders/` + id;
+  const urls = `http://127.0.0.1:8015/orders/` + id;
   useMemo(() => {
     const fetchData = async () => {
       const result = await axios({

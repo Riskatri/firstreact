@@ -22,7 +22,7 @@ class Update extends React.Component {
     const id = this.props.match.params.id;
     const result = await axios({
       method: "get",
-      url: "http://127.0.0.1:8000/books/" + id,
+      url: "http://127.0.0.1:8015/books/" + id,
       data: this.state,
       headers: {
         Authorization: token.token.accessToken
@@ -53,7 +53,7 @@ class Update extends React.Component {
       const id = this.props.match.params.id;
       const result = await axios({
         method: "put",
-        url: "http://127.0.0.1:8000/books/" + id,
+        url: "http://127.0.0.1:8015/books/" + id,
         data: this.state,
         headers: {
           Authorization: token.token.accessToken

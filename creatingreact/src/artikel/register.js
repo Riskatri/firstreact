@@ -8,8 +8,7 @@ function Register() {
     name: "",
     username: "",
     email: "",
-    password: "",
-    roles: ["USER"]
+    password: ""
   });
 
   const [status, setStatus] = useState({
@@ -17,14 +16,14 @@ function Register() {
   });
 
   const handlerSubmit = async e => {
-    e.preventDefault();
     try {
-      const result = await axios.post("http://127.0.0.1:8015/register", {
+      const result = await axios.post("http://127.0.0.1:7000/signup", {
         name: form.name,
         username: form.username,
         email: form.email,
         password: form.password,
-        roles: form.roles
+        admin: true,
+        status: true
       });
 
       console.log(result.data);
@@ -48,7 +47,7 @@ function Register() {
     email: "",
     password: ""
   };
-  const { register, errors, reset } = useForm({
+  const { register, errors, handleSubmit } = useForm({
     defaultValues
   });
 
@@ -59,7 +58,7 @@ function Register() {
     <div className="prof">
       <div className="card-header bg-dark text-white">Register</div>
       <div className="card-body">
-        <form onSubmit={handlerSubmit}>
+        <form onSubmit={e => e.preventDefault()}>
           <div class="form-group">
             <label>Name </label>
             <input
@@ -134,9 +133,7 @@ function Register() {
           <button
             type="submit"
             className="btn btn-dark"
-            onClick={() => {
-              reset(defaultValues);
-            }}
+            onClick={handleSubmit(handlerSubmit)}
           >
             Submit
           </button>

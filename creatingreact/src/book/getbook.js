@@ -12,7 +12,7 @@ function BookHook() {
     );
     axios({
       method: "delete",
-      url: `http://127.0.0.1:8000/books/${id}`,
+      url: `http://127.0.0.1:8015/books/${id}`,
       headers: {
         Authorization: token.token.accessToken
       },

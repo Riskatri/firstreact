@@ -15,19 +15,18 @@ function Login() {
     password: ""
   });
   const [token, getToken] = usePersistedState("token", "");
-  const [role, setRole] = useState({
+  const [admin, setAdmin] = useState({
     redirect: true
   });
 
   const handlerSubmit = async e => {
-    e.preventDefault();
     try {
-      const result = await axios.post("http://127.0.0.1:8015/login", {
+      const result = await axios.post("http://127.0.0.1:7000/login", {
         username: form.username,
         password: form.password
       });
       getToken(result.data);
-      setRole(result.data.Role);
+      setAdmin(result.data.Admin);
       console.log(result.data.accessToken);
       if (result.status === 200) {
         alert("login sucessfuly!");
@@ -47,20 +46,20 @@ function Login() {
     username: "",
     password: ""
   };
-  const { register, errors, reset } = useForm({
+  const { register, errors, handleSubmit } = useForm({
     defaultValues
   });
 
-  if (role === "ADMIN") {
-    return <Redirect to="/post/books" />;
-  } else if (role === "USER") {
-    return <Redirect to="/get/books" />;
+  if (admin === true) {
+    return <Redirect to="/users" />;
+  } else if (admin === false) {
+    return <Redirect to="/" />;
   } else {
     return (
       <div className="prof">
         <div className="card-header bg-dark text-white">Login</div>
         <div className="card-body">
-          <form onSubmit={handlerSubmit}>
+          <form onSubmit={e => e.preventDefault()}>
             <div class="form-group">
               <label>Username </label>
               <input
@@ -102,9 +101,7 @@ function Login() {
             <button
               type="submit"
               className="btn btn-dark"
-              onClick={() => {
-                reset(defaultValues);
-              }}
+              onClick={handleSubmit(handlerSubmit)}
             >
               Submit
             </button>

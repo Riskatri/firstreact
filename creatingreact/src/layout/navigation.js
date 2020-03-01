@@ -25,7 +25,7 @@ function Navigation() {
   if (!token) {
     return (
       <Navbar color="lnavbar navbar-dark bg-dark" light expand="md">
-        <NavbarBrand href={"/"}>Book</NavbarBrand>
+        <NavbarBrand href={"/"}>Blog</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
@@ -43,26 +43,21 @@ function Navigation() {
         </Collapse>
       </Navbar>
     );
-  } else if (token.token.Role === "ADMIN") {
+  } else if (token.token.admin === true) {
     return (
       <Navbar color="lnavbar navbar-dark bg-dark" light expand="md">
-        <NavbarBrand href={"/"}>Book</NavbarBrand>
+        <NavbarBrand href={"/"}>blog</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink to="/books" tag={RRNavLink}>
-                List Books
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/post/books" tag={RRNavLink}>
-                Post Books
-              </NavLink>
-            </NavItem>
-            <NavItem>
               <NavLink to="/users" tag={RRNavLink}>
-                Users
+                user
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink to="/articles" tag={RRNavLink}>
+                articles
               </NavLink>
             </NavItem>
 
@@ -75,21 +70,16 @@ function Navigation() {
         </Collapse>
       </Navbar>
     );
-  } else if (token.token.Role === "USER") {
+  } else if (token.token.admin === false) {
     return (
       <Navbar color="lnavbar navbar-dark bg-dark" light expand="md">
-        <NavbarBrand href={"/"}>Book</NavbarBrand>
+        <NavbarBrand href={"/"}>blog</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink to="/get/books" tag={RRNavLink}>
-                List Books
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/orders" tag={RRNavLink}>
-                List orderan
+              <NavLink to="/articles" tag={RRNavLink}>
+                articles
               </NavLink>
             </NavItem>
             <NavItem>
