@@ -60,7 +60,11 @@ function Navigation() {
                 articles
               </NavLink>
             </NavItem>
-
+            {/* <NavItem>
+              <NavLink to="/post/articles/:id" tag={RRNavLink}>
+                create articles
+              </NavLink>
+            </NavItem> */}
             <NavItem>
               <NavLink onClick={logout} to="/login" tag={RRNavLink}>
                 Logout

@@ -103,7 +103,7 @@ function Login() {
               className="btn btn-dark"
               onClick={handleSubmit(handlerSubmit)}
             >
-              Submit
+              LOGIN
             </button>
           </form>
         </div>

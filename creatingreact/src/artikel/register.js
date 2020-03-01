@@ -135,7 +135,7 @@ function Register() {
             className="btn btn-dark"
             onClick={handleSubmit(handlerSubmit)}
           >
-            Submit
+            REGISTER
           </button>
         </form>
       </div>

@@ -8,6 +8,23 @@ function User() {
   const token = JSON.parse(
     sessionStorage.getItem("persisted_state_hook:token")
   );
+
+  function DeleteArticle(id) {
+    const token = JSON.parse(
+      sessionStorage.getItem("persisted_state_hook:token")
+    );
+    axios({
+      method: "delete",
+      url: `http://127.0.0.1:7000/articles/${id}`,
+      headers: {
+        Authorization: token.token.accessToken
+      },
+      data: data
+    });
+    alert("article has been delete");
+    window.location.reload(false);
+  }
+
   useMemo(() => {
     const fetchData = async () => {
       const result = await axios({
@@ -37,17 +54,26 @@ function User() {
     return data.artikel.map(artikel => {
       return (
         <div className="card">
-          <div class="card-header">
+          <div className="container text-right">
+            <button
+              className="btn btn-outline-dark btn-sm"
+              onClick={() => DeleteArticle(artikel.id)}
+            >
+              x
+            </button>
+          </div>
+          <div className="card-header">
             <h4>
               {artikel.id}. {artikel.judul}
             </h4>
           </div>
-          <div class="card-body">
-            <p class="card-text">
+          <div className="card-body">
+            <p className="card-text">
               <i> {artikel.isi}</i>
             </p>
-            <p class="card-text">
-              <small class="text-muted">
+
+            <p className="card-text">
+              <small className="text-muted">
                 someone update with userid {artikel.userId}
               </small>
             </p>
@@ -57,7 +83,16 @@ function User() {
     });
   };
 
-  return <tbody>{showArticle()}</tbody>;
+  return (
+    <div className="container text-right">
+      <Link to={"/post/articles/" + token.token.id}>
+        <button className="button bg-secondary">+ articles</button>
+      </Link>
+      <div className="container text-left">
+        <tbody>{showArticle()}</tbody>;
+      </div>
+    </div>
+  );
 
   //   const renderTable = () => {
   //     return data.artikel.map((artikel, id) => {
