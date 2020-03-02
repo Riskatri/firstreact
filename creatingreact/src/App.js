@@ -15,7 +15,7 @@ import Artikelforuser from "./artikel/artikelforuser";
 import Listartikeluser from "./artikel/listartikelbyuserid";
 import PostComment from "./artikel/postcomment";
 import Articleguess from "./artikel/artikelforguess";
-// import ShowComment from "./artikel/showcomments";
+import ShowComment from "./artikel/showcomments";
 
 const token = JSON.parse(sessionStorage.getItem("persisted_state_hook:token"));
 const App = props => {
@@ -46,6 +46,7 @@ const App = props => {
                       path="/update/articles/:id"
                       component={UpdateArtikel}
                     />
+                    <Route path="/get/comments/:id" component={ShowComment} />
                     <Route component={Notfound} />
                   </Switch>
                 </>
@@ -61,7 +62,7 @@ const App = props => {
                     path="/post/comments/:id/:id"
                     component={PostComment}
                   />
-                  {/* <Route path="/get/comments" component={ShowComment} /> */}
+                  <Route path="/get/comments/:id" component={ShowComment} />
                   {/* <Route path="/orders" component={Orderan} /> */}
                   <Route component={Notfound} />
                 </Switch>

@@ -7,7 +7,8 @@ class Update extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isi_comment: ""
+      isi_comment: "",
+      status: true
     };
   }
 
@@ -51,7 +52,7 @@ class Update extends React.Component {
         {/* {" "}
         <Artikel /> */}
         <div className="prof">
-          <div className="card-header bg-secondary">
+          <div className="card-header bg-light">
             <div className="card-body">
               <form onSubmit={this.handlerSubmit}>
                 <div class="form-group">

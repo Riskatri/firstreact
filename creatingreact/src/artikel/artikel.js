@@ -60,7 +60,7 @@ function Artikel() {
   const showArticle = () => {
     return data.artikel.map(artikel => {
       return (
-        <div className="card">
+        <div className="home card">
           <div className="container text-right">
             <button
               className="btn btn-outline-dark btn-sm"
@@ -87,6 +87,9 @@ function Artikel() {
                 someone update with userid {artikel.userId}
               </small>
             </p>
+            <Link to={`/get/comments/${artikel.id}`}>
+              <button className="button bg-secondary"> show comments</button>
+            </Link>
           </div>
         </div>
       );

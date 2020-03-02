@@ -8,8 +8,8 @@ function Artikel(props) {
   const token = JSON.parse(
     sessionStorage.getItem("persisted_state_hook:token")
   );
-  const id = token.token.id;
-  const urls = `http://127.0.0.1:7000/articles/` + id;
+  const artikelId = props.match.params.artikelId;
+  const urls = `http://127.0.0.1:7000/articles/` + artikelId;
   useMemo(() => {
     const fetchData = async () => {
       const result = await axios({

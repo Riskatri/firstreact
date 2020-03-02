@@ -1,8 +1,10 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import axios from "axios";
 
 function Artikel() {
   const [data, setData] = useState({ artikel: [] });
+  const [filtered, setFiltered] = useState([]);
+  const [result, setResult] = useState("");
 
   useMemo(() => {
     const fetchData = async () => {
@@ -20,6 +22,16 @@ function Artikel() {
     }
   }, []);
 
+  useEffect(() => {
+    const results = filtered.filter(res =>
+      res.artikel.toLowerCase().includes(result)
+    );
+    setData(results);
+  }, [result]);
+
+  const onChange = e => {
+    setResult(e.target.value);
+  };
   console.log(data);
 
   const showArticle = () => {
@@ -50,6 +62,12 @@ function Artikel() {
 
   return (
     <div className="container text-left">
+      <input
+        type="text"
+        placeholder="search"
+        value={result}
+        onChange={onChange}
+      />
       <tbody>{showArticle()}</tbody>
     </div>
   );

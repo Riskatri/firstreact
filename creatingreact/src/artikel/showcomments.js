@@ -1,62 +1,56 @@
 import React, { useState, useMemo } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
-import { Link } from "react-router-dom";
+// import Artikel from "./artikelbyid";
 
-function Artikel() {
-  const [data, setData] = useState({ artikel: [] });
+function Comment(props) {
+  const [data, setData] = useState([]);
   const token = JSON.parse(
     sessionStorage.getItem("persisted_state_hook:token")
   );
-
+  const id = props.match.params.id;
+  const urls = `http://127.0.0.1:7000/comments/` + id;
   useMemo(() => {
     const fetchData = async () => {
       const result = await axios({
         method: "get",
-        url: "http://127.0.0.1:7000/comments",
+        url: urls,
         headers: {
           Authorization: token.token.accessToken
-        },
-        data: data
+        }
       });
-      setData(result.data);
+      setData(result.data.artikel.comments);
     };
     try {
       fetchData();
     } catch (err) {
       alert(err);
     }
+
     // console.log(data);
   }, []);
+  console.log(data);
   if (!token) {
     return <Redirect to="/login" />;
   }
 
-  console.log(data);
-
-  const showArticle = () => {
-    return data.artikel.map(artikel => {
+  const showComment = () => {
+    return data.map(data => {
       return (
-        <div className="card-body">
-          <p className="card-text">
-            <i>
-              {artikel.komentar.id}. {artikel.komentar.isi_comment}
-            </i>
-          </p>
-          <p className="card-text">
-            <small className="text-muted">
-              someone comment with userid {artikel.userId}
-            </small>
-          </p>
+        <div className="prof card ">
+          <div className="card-header">
+            <p> comment list on article {data.artikelId}</p>
+            <p className="card-text">
+              <small className="text-muted">
+                someone comment with userid {data.userId}:
+              </small>
+              <i> {data.isi_comment}</i>
+            </p>
+          </div>
         </div>
       );
     });
   };
-
-  return (
-    <div className="container text-left">
-      <tbody>{showArticle()}</tbody>
-    </div>
-  );
+  return <tbody>{showComment()}</tbody>;
 }
-export default Artikel;
+export default Comment;

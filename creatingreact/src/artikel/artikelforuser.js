@@ -1,10 +1,12 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 function Artikel() {
-  const [data, setData] = useState({ artikel: [] });
+  const [data, setData] = useState([]);
+  const [filtered, setFiltered] = useState([]);
+  const [result, setResult] = useState("");
 
   const token = JSON.parse(
     sessionStorage.getItem("persisted_state_hook:token")
@@ -20,7 +22,8 @@ function Artikel() {
         },
         data: data
       });
-      setData(result.data);
+      setData(result.data.artikel);
+      setFiltered(result.data);
     };
     try {
       fetchData();
@@ -29,6 +32,17 @@ function Artikel() {
     }
     // console.log(data);
   }, []);
+  useEffect(() => {
+    const results = filtered.filter(result =>
+      result.judul.toLowerCase().includes(result)
+    );
+    setData(results);
+  }, [result]);
+
+  const onChange = e => {
+    setResult(e.target.value);
+  };
+
   if (!token) {
     return <Redirect to="/login" />;
   }
@@ -36,29 +50,29 @@ function Artikel() {
   console.log(data);
 
   const showArticle = () => {
-    return data.artikel.map(artikel => {
+    return data.map(data => {
       return (
-        <div className="card">
+        <div className="home card">
           <div className="container text-right"></div>
-          <div className="card-header">
+          <div className="card-header bg-secondary">
             <h4>
-              {artikel.id}. {artikel.judul}
+              {data.id}. {data.judul}
             </h4>
           </div>
           <div className="card-body">
             <p className="card-text">
-              <i> {artikel.isi}</i>
+              <i> {data.isi}</i>
             </p>
 
             <p className="card-text">
               <small className="text-muted">
-                someone update with userid {artikel.userId}
+                someone update with userid {data.userId}
               </small>
             </p>
-            <Link to={`/post/comments/${token.token.id}/${artikel.id}`}>
+            <Link to={`/post/comments/${token.token.id}/${data.id}`}>
               <button className="button bg-secondary">comments</button>
             </Link>
-            <Link to={`/get/comments`}>
+            <Link to={`/get/comments/${data.id}`}>
               <button className="button bg-secondary"> show comments</button>
             </Link>
           </div>
@@ -76,6 +90,12 @@ function Artikel() {
         <button className="button bg-secondary">see your article</button>
       </Link>
       <div className="container text-left">
+        <input
+          type="text"
+          placeholder="search"
+          value={result}
+          onChange={onChange}
+        />
         <tbody>{showArticle()}</tbody>
       </div>
     </div>
