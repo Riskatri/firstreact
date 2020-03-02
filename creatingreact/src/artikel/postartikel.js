@@ -72,7 +72,6 @@ class PostBook extends React.Component {
 
             <textarea
               className="form-control"
-              aria-label="With textarea"
               value={this.state.isi}
               onChange={this.handlerChange}
               name="isi"

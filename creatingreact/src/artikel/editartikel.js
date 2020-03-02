@@ -9,6 +9,7 @@ class Update extends React.Component {
       status: ""
     };
   }
+
   componentDidMount = async () => {
     const token = JSON.parse(
       sessionStorage.getItem("persisted_state_hook:token")
@@ -16,7 +17,7 @@ class Update extends React.Component {
     const id = this.props.match.params.id;
     const result = await axios({
       method: "get",
-      url: "http://127.0.0.1:7000/users/" + id,
+      url: "http://127.0.0.1:7000/articles/" + id,
       data: this.state,
       headers: {
         Authorization: token.token.accessToken
@@ -41,16 +42,17 @@ class Update extends React.Component {
       const id = this.props.match.params.id;
       const result = await axios({
         method: "put",
-        url: "http://127.0.0.1:7000/users/" + id,
+        url: "http://127.0.0.1:7000/articles/" + id,
         data: this.state,
         headers: {
           Authorization: token.token.accessToken
         }
       });
+
       console.log(result);
 
       if (result.status === 201) {
-        alert("Data update sucessfuly!");
+        alert("articles update successfully!");
       } else {
         throw new Error("Failed to update data!");
       }

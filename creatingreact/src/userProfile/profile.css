@@ -15,8 +15,13 @@
   background-color: gray;
 }
 .tulis {
-  text-align: center;
-  margin-left: 50px;
+  font-family: Arial;
+  padding: 10px;
+  background-color: ghostwhite;
+  font-size: 15px;
+  margin-left: 400px;
+  width: 500px;
+  text-align: left;
 }
 .hook {
   font-family: Arial;

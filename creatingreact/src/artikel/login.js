@@ -58,7 +58,7 @@ function Login() {
     return (
       <div className="prof">
         <div className="card-header bg-dark text-white">Login</div>
-        <div className="card-body">
+        <div className="card-body bg-light">
           <form onSubmit={e => e.preventDefault()}>
             <div class="form-group">
               <label>Username </label>

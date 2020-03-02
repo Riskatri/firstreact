@@ -10,6 +10,12 @@ import Notfound from "./components/notfound";
 import updateUser from "./artikel/edituser";
 import Artikel from "./artikel/artikel";
 import PostArtikel from "./artikel/postartikel";
+import UpdateArtikel from "./artikel/editartikel";
+import Artikelforuser from "./artikel/artikelforuser";
+import Listartikeluser from "./artikel/listartikelbyuserid";
+import PostComment from "./artikel/postcomment";
+import Articleguess from "./artikel/artikelforguess";
+// import ShowComment from "./artikel/showcomments";
 
 const token = JSON.parse(sessionStorage.getItem("persisted_state_hook:token"));
 const App = props => {
@@ -22,6 +28,7 @@ const App = props => {
               return (
                 <Switch>
                   <Route exact path="/" component={Home} />
+                  <Route path="/articles" component={Articleguess} />
                   <Route path="/register" component={Register} />
                   <Route path="/login" component={Login} />
                 </Switch>
@@ -35,6 +42,10 @@ const App = props => {
                     <Route path="/update/users/:id" component={updateUser} />
                     <Route path="/articles" component={Artikel} />
                     <Route path="/post/articles/:id" component={PostArtikel} />
+                    <Route
+                      path="/update/articles/:id"
+                      component={UpdateArtikel}
+                    />
                     <Route component={Notfound} />
                   </Switch>
                 </>
@@ -43,7 +54,14 @@ const App = props => {
               return (
                 <Switch>
                   <Route exact path="/" component={Home} />
-                  {/* <Route path="/get/articles" component={bookUser} /> */}
+                  <Route path="/articles" component={Artikelforuser} />
+                  <Route path="/post/articles/:id" component={PostArtikel} />
+                  <Route path="/get/articles/:id" component={Listartikeluser} />
+                  <Route
+                    path="/post/comments/:id/:id"
+                    component={PostComment}
+                  />
+                  {/* <Route path="/get/comments" component={ShowComment} /> */}
                   {/* <Route path="/orders" component={Orderan} /> */}
                   <Route component={Notfound} />
                 </Switch>

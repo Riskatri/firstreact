@@ -30,6 +30,11 @@ function Navigation() {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
+              <NavLink to="/articles" tag={RRNavLink}>
+                articles
+              </NavLink>
+            </NavItem>
+            <NavItem>
               <NavLink to="/register" tag={RRNavLink}>
                 Register
               </NavLink>
@@ -86,6 +91,11 @@ function Navigation() {
                 articles
               </NavLink>
             </NavItem>
+            {/* <NavItem>
+              <NavLink to="/get/articles/:id" tag={RRNavLink}>
+                user articles
+              </NavLink>
+            </NavItem> */}
             <NavItem>
               <NavLink onClick={logout} to="/login" tag={RRNavLink}>
                 Logout

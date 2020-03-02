@@ -22,7 +22,7 @@ function Register() {
         username: form.username,
         email: form.email,
         password: form.password,
-        admin: true,
+        admin: false,
         status: true
       });
 
@@ -55,7 +55,7 @@ function Register() {
     return <Redirect to="/login" />;
   }
   return (
-    <div className="prof">
+    <div className="tulis">
       <div className="card-header bg-dark text-white">Register</div>
       <div className="card-body">
         <form onSubmit={e => e.preventDefault()}>

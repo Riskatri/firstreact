@@ -39,8 +39,30 @@ function User() {
           <td>{user.id}</td>
           <td>{user.username}</td>
           <td>{user.email}</td>
-          <td>{user.admin}</td>
-          <td>{user.status}</td>
+          <td>
+            {user.admin}
+            {(() => {
+              if (user.admin === true) {
+                return <p> Admin </p>;
+              } else {
+                return <p> user </p>;
+              }
+            })()}
+          </td>
+          <td>
+            {user.status}
+            {(() => {
+              if (user.status === true) {
+                return (
+                  <button className="button btn-sm bg-primary">ACTIVE</button>
+                );
+              } else {
+                return (
+                  <button className="button btn-sm bg-danger">BLOCK</button>
+                );
+              }
+            })()}
+          </td>
           <td>
             <Link to={"/update/users/" + user.id}>
               <button className="button bg-primary">Edit</button>
@@ -52,14 +74,14 @@ function User() {
   };
   return (
     <div>
-      <h3 id="title">Daftar Pengunjung</h3>
-      <div className="container">
+      <h3 className="title bg-light">List user </h3>
+      <div>
         <table className="table table-striped table-dark">
           <tr>
             <th>ID</th>
             <th>Username</th>
             <th>Email</th>
-            <th>status admin</th>
+            <th>admin</th>
             <th>status</th>
             <th>Action</th>
           </tr>
