@@ -79,10 +79,7 @@ function Artikel() {
           </div>
           <div className="card-body">
             <p className="card-text">
-              <i> {artikel.isi}</i>
-            </p>
-
-            <p className="card-text">
+              <i> {artikel.isi}</i> <br />
               <small className="text-muted">
                 someone update with userid {artikel.userId}
               </small>

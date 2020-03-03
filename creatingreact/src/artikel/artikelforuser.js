@@ -32,15 +32,16 @@ function Artikel() {
     }
     // console.log(data);
   }, []);
+
   useEffect(() => {
-    const results = filtered.filter(result =>
-      result.judul.toLowerCase().includes(result)
+    const results = data.filter(data =>
+      data.judul.toLowerCase().includes(result)
     );
     setData(results);
   }, [result]);
 
   const onChange = e => {
-    setResult(e.target.value);
+    setResult({ result: e.target.value });
   };
 
   if (!token) {
@@ -54,17 +55,14 @@ function Artikel() {
       return (
         <div className="home card">
           <div className="container text-right"></div>
-          <div className="card-header bg-secondary">
+          <div className="card-header border-primary">
             <h4>
               {data.id}. {data.judul}
             </h4>
           </div>
           <div className="card-body">
             <p className="card-text">
-              <i> {data.isi}</i>
-            </p>
-
-            <p className="card-text">
+              <i> {data.isi}</i> <br />
               <small className="text-muted">
                 someone update with userid {data.userId}
               </small>
@@ -73,7 +71,7 @@ function Artikel() {
               <button className="button bg-secondary">comments</button>
             </Link>
             <Link to={`/get/comments/${data.id}`}>
-              <button className="button bg-secondary"> show comments</button>
+              <button className="button bg-default"> show comments</button>
             </Link>
           </div>
         </div>
@@ -84,10 +82,10 @@ function Artikel() {
   return (
     <div className="container text-right">
       <Link to={"/post/articles/" + token.token.id}>
-        <button className="button bg-secondary">+ articles</button>
+        <button className="button">+ articles</button>
       </Link>
       <Link to={"/get/articles/" + token.token.id}>
-        <button className="button bg-secondary">see your article</button>
+        <button className="button">see your article</button>
       </Link>
       <div className="container text-left">
         <input

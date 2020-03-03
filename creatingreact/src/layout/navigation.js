@@ -30,7 +30,7 @@ function Navigation() {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink to="/articles" tag={RRNavLink}>
+              <NavLink to="/guess/articles" tag={RRNavLink}>
                 articles
               </NavLink>
             </NavItem>
@@ -106,5 +106,31 @@ function Navigation() {
       </Navbar>
     );
   }
+  return (
+    <Navbar color="lnavbar navbar-dark bg-dark" light expand="md">
+      <NavbarBrand href={"/"}>Blog</NavbarBrand>
+      <NavbarToggler onClick={toggle} />
+      <Collapse isOpen={isOpen} navbar>
+        <Nav className="mr-auto" navbar>
+          <NavItem>
+            <NavLink to="/guess/articles" tag={RRNavLink}>
+              articles
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to="/register" tag={RRNavLink}>
+              Register
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to="/login" tag={RRNavLink}>
+              Login
+            </NavLink>
+          </NavItem>
+        </Nav>
+      </Collapse>
+    </Navbar>
+  );
 }
+
 export default Navigation;

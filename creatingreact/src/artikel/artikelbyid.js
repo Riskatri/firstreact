@@ -47,10 +47,7 @@ function Artikel(props) {
           </div>
           <div className="card-body">
             <p className="card-text">
-              <i> {data.isi}</i>
-            </p>
-
-            <p className="card-text">
+              <i> {data.isi}</i> <br></br>
               <small className="text-muted">
                 someone update with userid {token.token.id}
               </small>

@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div>
       <img src={mainLogo} class="rounded-circle" alt="physics" width="400px" />
-      <div className="home">
+      <div className="text-light">
         <Clock />
         <h1>
           <i> Welcome to fun physics </i>

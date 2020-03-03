@@ -36,7 +36,7 @@ class Update extends React.Component {
       console.log(result);
 
       if (result.status === 201) {
-        alert("articles update successfully!");
+        alert("comment successfully!");
       } else {
         throw new Error("Failed to update data!");
       }

@@ -58,7 +58,9 @@ function User() {
                 );
               } else {
                 return (
-                  <button className="button btn-sm bg-danger">BLOCK</button>
+                  <button className="button btn-sm bg-danger" disabled>
+                    BLOCK
+                  </button>
                 );
               }
             })()}

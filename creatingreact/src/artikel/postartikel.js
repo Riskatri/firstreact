@@ -2,14 +2,14 @@ import React from "react";
 import axios from "axios";
 import "../userProfile/profile.css";
 
-class PostBook extends React.Component {
+class PostArtikel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       judul: "",
       isi: "",
-      userId: ""
-      //   status: ""
+      userId: "",
+      status: true
     };
   }
 
@@ -87,4 +87,4 @@ class PostBook extends React.Component {
     );
   }
 }
-export default PostBook;
+export default PostArtikel;
