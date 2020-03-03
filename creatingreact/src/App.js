@@ -68,14 +68,6 @@ const App = props => {
                   <Route component={Notfound} />
                 </Switch>
               );
-            } else {
-              return (
-                <Switch>
-                  <Route path="/guess/articles" component={Articleguess} />
-                  <Route path="/register" component={Register} />
-                  <Route path="/login" component={Login} />
-                </Switch>
-              );
             }
           })()}
         </Main>
