@@ -3,8 +3,8 @@ import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-function User() {
-  const [data, setData] = useState({ user: [] });
+function Article() {
+  const [data, setData] = useState({ artikel: [] });
   const token = JSON.parse(
     sessionStorage.getItem("persisted_state_hook:token")
   );
@@ -12,7 +12,7 @@ function User() {
     const fetchData = async () => {
       const result = await axios({
         method: "get",
-        url: "http://127.0.0.1:7000/users",
+        url: "http://127.0.0.1:7000/articles",
         headers: {
           Authorization: token.token.accessToken
         },
@@ -34,16 +34,17 @@ function User() {
 
   console.log(data);
   const renderTable = () => {
-    return data.user.map((user, id) => {
+    return data.artikel.map((artikel, id) => {
       return (
         <tr key={id}>
-          <td>{user.id}</td>
-          <td>{user.username}</td>
-          <td>{user.email}</td>
+          <td>{artikel.id}</td>
+          <td>{artikel.judul}</td>
+          <td>{artikel.isi}</td>
+          <td>{artikel.userId}</td>
           <td>
-            {user.admin}
+            {artikel.admin}
             {(() => {
-              if (user.admin === true) {
+              if (artikel.admin === true) {
                 return <p> Admin </p>;
               } else {
                 return <p> user </p>;
@@ -51,23 +52,23 @@ function User() {
             })()}
           </td>
           <td>
-            {user.status}
+            {artikel.status}
             {(() => {
-              if (user.status === true) {
+              if (artikel.status === true) {
                 return (
-                  <button className="button btn-sm bg-primary">ACTIVE</button>
+                  <button className="button btn-sm bg-primary">show</button>
                 );
               } else {
                 return (
                   <button className="button btn-sm bg-danger" disabled>
-                    BLOCK
+                    hide
                   </button>
                 );
               }
             })()}
           </td>
           <td>
-            <Link to={"/update/users/" + user.id}>
+            <Link to={"/update/articles/" + artikel.id}>
               <button className="button bg-primary">Edit</button>
             </Link>
           </td>
@@ -77,13 +78,14 @@ function User() {
   };
   return (
     <div>
-      <h3 className="title bg-light">List user </h3>
+      <h3 className="title bg-light">List Articles</h3>
       <div>
         <table className="table table-striped table-dark">
           <tr>
             <th>ID</th>
-            <th>Username</th>
-            <th>Email</th>
+            <th>judul</th>
+            <th>isi</th>
+            <th>user id</th>
             <th>admin</th>
             <th>status</th>
             <th>Action</th>
@@ -95,4 +97,4 @@ function User() {
     </div>
   );
 }
-export default User;
+export default Article;

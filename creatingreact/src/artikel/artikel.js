@@ -4,9 +4,8 @@ import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 function Artikel() {
-  const [data, setData] = useState({ artikel: [] });
-  // const [searchTerm, setSearchTerm] = useState("");
-  // const [searchResults, setSearchResults] = useState([]);
+  const [data, setData] = useState([]);
+
   const token = JSON.parse(
     sessionStorage.getItem("persisted_state_hook:token")
   );
@@ -41,7 +40,7 @@ function Artikel() {
         },
         data: data
       });
-      setData(result.data);
+      setData(result.data.artikel); //
       // const results = artikel.filter(artikel => artikel.toLowerCase().includes(searchTerm))
     };
     try {
@@ -58,38 +57,39 @@ function Artikel() {
   console.log(data);
 
   const showArticle = () => {
-    return data.artikel.map(artikel => {
-      return (
-        <div className="home card">
-          <div className="container text-right">
-            <button
-              className="btn btn-outline-dark btn-sm"
-              onClick={() => DeleteArticle(artikel.id)}
-            >
-              x
-            </button>
-            {/* <Link to={"/update/articles/" + artikel.id}>
-              <button className="button bg-primary">Edit</button>
-            </Link> */}
-          </div>
-          <div className="card-header">
-            <h4>
-              {artikel.id}. {artikel.judul}
-            </h4>
-          </div>
-          <div className="card-body">
-            <p className="card-text">
-              <i> {artikel.isi}</i> <br />
-              <small className="text-muted">
-                someone update with userid {artikel.userId}
-              </small>
-            </p>
+    return data.map(artikel => {
+      if (artikel.status === true) {
+        return (
+          <div className="home card">
+            <div className="container text-right">
+              <button
+                className="btn btn-outline-dark btn-sm"
+                onClick={() => DeleteArticle(artikel.id)}
+              >
+                x
+              </button>
+            </div>
+            <div className="card-header">
+              <h4>
+                {artikel.id}. {artikel.judul}
+              </h4>
+            </div>
+            <div className="card-body">
+              <p className="card-text">
+                <i> {artikel.isi}</i> <br />
+                <small className="text-muted">
+                  {artikel.createdAt}: someone update with userid
+                  {artikel.userId}
+                </small>
+              </p>
+            </div>
+
             <Link to={`/get/comments/${artikel.id}`}>
-              <button className="button bg-secondary"> show comments</button>
+              <button className="button bg-primary"> show comments</button>
             </Link>
           </div>
-        </div>
-      );
+        );
+      }
     });
   };
 

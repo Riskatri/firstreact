@@ -65,6 +65,11 @@ function Navigation() {
                 articles
               </NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink to="/list/articles" tag={RRNavLink}>
+                status articles
+              </NavLink>
+            </NavItem>
             {/* <NavItem>
               <NavLink to="/post/articles/:id" tag={RRNavLink}>
                 create articles

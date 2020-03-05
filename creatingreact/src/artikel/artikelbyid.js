@@ -37,24 +37,26 @@ function Artikel(props) {
 
   const showArticle = () => {
     return data.map(data => {
-      return (
-        <div className="card">
-          <div className="container text-right"></div>
-          <div className="card-header">
-            <h4>
-              {data.id}. {data.judul}
-            </h4>
+      if (data.status === true) {
+        return (
+          <div className="card">
+            <div className="container text-right"></div>
+            <div className="card-header">
+              <h4>
+                {data.id}. {data.judul}
+              </h4>
+            </div>
+            <div className="card-body">
+              <p className="card-text">
+                <i> {data.isi}</i> <br></br>
+                <small className="text-muted">
+                  {data.createdAt}: someone update with userid {token.token.id}
+                </small>
+              </p>
+            </div>
           </div>
-          <div className="card-body">
-            <p className="card-text">
-              <i> {data.isi}</i> <br></br>
-              <small className="text-muted">
-                someone update with userid {token.token.id}
-              </small>
-            </p>
-          </div>
-        </div>
-      );
+        );
+      }
     });
   };
 

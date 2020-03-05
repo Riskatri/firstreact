@@ -36,21 +36,25 @@ function Comment(props) {
 
   const showComment = () => {
     return data.map(data => {
-      return (
-        <div className="prof card ">
-          <div className="card-header">
-            <p> comment list on article {data.artikelId}</p>
-            <p className="card-text">
-              <small className="text-muted">
-                someone comment with userid {data.userId}:
-              </small>
-              <i> {data.isi_comment}</i>
-            </p>
+      if (data.status === true) {
+        return (
+          <div className="prof card ">
+            <div className="card-header">
+              <p> comment list on article {data.artikelId}</p>
+              <p className="card-text">
+                <small className="text-muted">
+                  someone comment with userid {data.userId}:
+                </small>
+
+                <i> {data.isi_comment}</i>
+              </p>
+            </div>
           </div>
-        </div>
-      );
+        );
+      }
     });
   };
+
   return <tbody>{showComment()}</tbody>;
 }
 export default Comment;

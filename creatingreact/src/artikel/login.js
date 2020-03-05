@@ -30,7 +30,7 @@ function Login() {
       console.log(result.data.accessToken);
       if (result.status === 200) {
         alert("login sucessfuly!");
-        // setStatus({ redirect: true });
+        window.location.reload();
       }
     } catch (err) {
       console.log(err);

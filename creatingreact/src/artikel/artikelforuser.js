@@ -1,12 +1,10 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-function Artikel() {
+function Artikel(props) {
   const [data, setData] = useState([]);
-  const [filtered, setFiltered] = useState([]);
-  const [result, setResult] = useState("");
 
   const token = JSON.parse(
     sessionStorage.getItem("persisted_state_hook:token")
@@ -16,14 +14,14 @@ function Artikel() {
     const fetchData = async () => {
       const result = await axios({
         method: "get",
-        url: "http://127.0.0.1:7000/articles",
+        url: `http://127.0.0.1:7000/articles/`,
         headers: {
           Authorization: token.token.accessToken
         },
         data: data
       });
       setData(result.data.artikel);
-      setFiltered(result.data);
+      // setKomen(result.data.artikel.comments);
     };
     try {
       fetchData();
@@ -32,18 +30,7 @@ function Artikel() {
     }
     // console.log(data);
   }, []);
-
-  useEffect(() => {
-    const results = data.filter(data =>
-      data.judul.toLowerCase().includes(result)
-    );
-    setData(results);
-  }, [result]);
-
-  const onChange = e => {
-    setResult({ result: e.target.value });
-  };
-
+  console.log(data);
   if (!token) {
     return <Redirect to="/login" />;
   }
@@ -51,31 +38,31 @@ function Artikel() {
   console.log(data);
 
   const showArticle = () => {
-    return data.map(data => {
-      return (
-        <div className="home card">
-          <div className="container text-right"></div>
-          <div className="card-header border-primary">
-            <h4>
-              {data.id}. {data.judul}
-            </h4>
-          </div>
-          <div className="card-body">
-            <p className="card-text">
-              <i> {data.isi}</i> <br />
-              <small className="text-muted">
-                someone update with userid {data.userId}
-              </small>
-            </p>
-            <Link to={`/post/comments/${token.token.id}/${data.id}`}>
-              <button className="button bg-secondary">comments</button>
+    return data.map(artikel => {
+      if (artikel.status === true) {
+        return (
+          <div className="home card">
+            <div className="container text-right"></div>
+            <div className="card-header border-primary">
+              <h4>
+                {artikel.id}. {artikel.judul}
+              </h4>
+            </div>
+            <div className="card-body">
+              <p className="card-text">
+                <i> {artikel.isi}</i> <br />
+                <small className="text-muted">
+                  {artikel.createdAt} : someone update with userid{" "}
+                  {artikel.userId}
+                </small>
+              </p>
+            </div>
+            <Link to={`/ambil/articles/${artikel.id}`}>
+              <button className="button bg-primary"> show more</button>
             </Link>
-            <Link to={`/get/comments/${data.id}`}>
-              <button className="button bg-default"> show comments</button>
-            </Link>
           </div>
-        </div>
-      );
+        );
+      }
     });
   };
 
@@ -88,12 +75,6 @@ function Artikel() {
         <button className="button">see your article</button>
       </Link>
       <div className="container text-left">
-        <input
-          type="text"
-          placeholder="search"
-          value={result}
-          onChange={onChange}
-        />
         <tbody>{showArticle()}</tbody>
       </div>
     </div>

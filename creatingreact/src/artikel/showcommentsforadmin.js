@@ -1,7 +1,8 @@
 import React, { useState, useMemo } from "react";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
-// import Artikel from "./artikelbyid";
+import { Redirect, Link } from "react-router-dom";
+
+// import { Link } from "react-router-dom";
 
 function Comment(props) {
   const [data, setData] = useState([]);
@@ -62,6 +63,7 @@ function Comment(props) {
             >
               x
             </button>
+            <Link to={`/edit/comments/${data.id}`}> edit </Link>
             <div className="card-header text-center">
               <p> comment list on article {data.artikelId}</p>
               <p className="card-text">

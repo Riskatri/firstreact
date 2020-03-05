@@ -51,6 +51,7 @@ class Update extends React.Component {
 
       if (result.status === 201) {
         alert("Data update sucessfuly!");
+        window.location.reload("/users");
       } else {
         throw new Error("Failed to update data!");
       }

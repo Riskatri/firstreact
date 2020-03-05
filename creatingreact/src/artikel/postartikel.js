@@ -36,6 +36,7 @@ class PostArtikel extends React.Component {
 
       if (result.status === 201) {
         alert("Data inserted sucessfuly!");
+        window.location.reload("/");
       } else {
         throw new Error("Failed to insert data!");
       }
