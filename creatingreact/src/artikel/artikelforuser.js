@@ -1,10 +1,14 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { IoIosCalendar } from "react-icons/io";
+import moment from "moment";
 
 function Artikel(props) {
   const [data, setData] = useState([]);
+  const [filtered, setFiltered] = useState([]);
+  const [res, setRes] = useState("");
 
   const token = JSON.parse(
     sessionStorage.getItem("persisted_state_hook:token")
@@ -21,6 +25,7 @@ function Artikel(props) {
         data: data
       });
       setData(result.data.artikel);
+      setFiltered(result.data.artikel);
       // setKomen(result.data.artikel.comments);
     };
     try {
@@ -30,6 +35,18 @@ function Artikel(props) {
     }
     // console.log(data);
   }, []);
+
+  useEffect(() => {
+    const results = filtered.filter(result =>
+      result.judul.toLowerCase().includes(res)
+    );
+    setData(results);
+  }, [res]);
+
+  onchange = e => {
+    setRes(e.target.value);
+  };
+
   console.log(data);
   if (!token) {
     return <Redirect to="/login" />;
@@ -38,11 +55,10 @@ function Artikel(props) {
   console.log(data);
 
   const showArticle = () => {
-    return data.map(artikel => {
+    return data.map((artikel, i) => {
       if (artikel.status === true) {
         return (
-          <div className="home card">
-            <div className="container text-right"></div>
+          <div key={i} className="home card">
             <div className="card-header border-primary">
               <h4>
                 {artikel.id}. {artikel.judul}
@@ -52,13 +68,14 @@ function Artikel(props) {
               <p className="card-text">
                 <i> {artikel.isi}</i> <br />
                 <small className="text-muted">
-                  {artikel.createdAt} : someone update with userid{" "}
-                  {artikel.userId}
+                  <IoIosCalendar />{" "}
+                  {moment(data.createdAt).format("DD/MM/YYYY")} : someone update
+                  with userid {artikel.userId}
                 </small>
               </p>
             </div>
             <Link to={`/ambil/articles/${artikel.id}`}>
-              <button className="button bg-primary"> show more</button>
+              <i className="text-center primary"> show more</i>
             </Link>
           </div>
         );
@@ -75,6 +92,12 @@ function Artikel(props) {
         <button className="button">see your article</button>
       </Link>
       <div className="container text-left">
+        <input
+          type="text"
+          placeholder="search"
+          value={res}
+          onChange={onchange}
+        />
         <tbody>{showArticle()}</tbody>
       </div>
     </div>

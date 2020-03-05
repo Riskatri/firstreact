@@ -2,6 +2,7 @@ import React, { useState, useMemo } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { IoIosHammer } from "react-icons/io";
 
 function Article() {
   const [data, setData] = useState({ artikel: [] });
@@ -27,6 +28,36 @@ function Article() {
     }
     // console.log(data);
   }, []);
+
+  function HideArticle(id) {
+    const token = JSON.parse(
+      sessionStorage.getItem("persisted_state_hook:token")
+    );
+    axios({
+      method: "put",
+      url: `http://127.0.0.1:7000/articles/${id}`,
+      headers: {
+        Authorization: token.token.accessToken
+      },
+      data: { status: false }
+    });
+    window.location.reload(false);
+  }
+
+  function ShowArticle(id) {
+    const token = JSON.parse(
+      sessionStorage.getItem("persisted_state_hook:token")
+    );
+    axios({
+      method: "put",
+      url: `http://127.0.0.1:7000/articles/${id}`,
+      headers: {
+        Authorization: token.token.accessToken
+      },
+      data: { status: true }
+    });
+    window.location.reload(false);
+  }
 
   if (!token) {
     return <Redirect to="/login" />;
@@ -56,11 +87,19 @@ function Article() {
             {(() => {
               if (artikel.status === true) {
                 return (
-                  <button className="button btn-sm bg-primary">show</button>
+                  <button
+                    className="btn bg-primary btn-sm"
+                    onClick={() => HideArticle(artikel.id)}
+                  >
+                    show
+                  </button>
                 );
-              } else {
+              } else if (artikel.status === false) {
                 return (
-                  <button className="button btn-sm bg-danger" disabled>
+                  <button
+                    className="btn bg-danger btn-sm"
+                    onClick={() => ShowArticle(artikel.id)}
+                  >
                     hide
                   </button>
                 );
@@ -69,7 +108,7 @@ function Article() {
           </td>
           <td>
             <Link to={"/update/articles/" + artikel.id}>
-              <button className="button bg-primary">Edit</button>
+              <IoIosHammer />
             </Link>
           </td>
         </tr>

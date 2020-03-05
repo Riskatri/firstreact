@@ -53,6 +53,14 @@ const App = props => {
                     <Route path="/edit/comments/:id" component={Editkomen} />
                     <Route path="/list/articles" component={Listartikel} />
                     <Route path="/get/comments/:id" component={CommentAdmin} />
+                    <Route
+                      path="/ambil/articles/:id"
+                      component={Ambilartikel}
+                    />
+                    <Route
+                      path="/post/comments/:id/:id"
+                      component={PostComment}
+                    />
                     <Route component={Notfound} />
                   </Switch>
                 </>

@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
-import { Link } from "react-router-dom";
+import moment from "moment";
 
 function Artikel(props) {
   const [data, setData] = useState([]);
@@ -41,7 +41,7 @@ function Artikel(props) {
       return (
         <div className="card">
           <div className="container text-right"></div>
-          <div className="card-header">
+          <div className="card-header border-primary">
             <h4>
               {data.id}. {data.judul}
             </h4>
@@ -50,10 +50,10 @@ function Artikel(props) {
             <p className="card-text">
               <i> {data.isi}</i>
             </p>
-
             <p className="card-text">
               <small className="text-muted">
-                {data.createdAt}: someone update with userid {token.token.id}
+                {moment(data.createdAt).format("DD/MM/YYYY")}: someone update
+                with userid {token.token.id}
               </small>
             </p>
           </div>

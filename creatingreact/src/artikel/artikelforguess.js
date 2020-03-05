@@ -1,8 +1,12 @@
 import React, { useState, useMemo, useEffect } from "react";
 import axios from "axios";
+import { IoIosCalendar } from "react-icons/io";
+import moment from "moment";
 
 function Artikel() {
   const [data, setData] = useState([]);
+  const [filtered, setFiltered] = useState([]);
+  const [res, setRes] = useState("");
 
   useMemo(() => {
     const fetchData = async () => {
@@ -13,6 +17,7 @@ function Artikel() {
       });
 
       setData(result.data.artikel);
+      setFiltered(result.data.artikel);
     };
     try {
       fetchData();
@@ -21,13 +26,23 @@ function Artikel() {
     }
   }, []);
 
+  useEffect(() => {
+    const results = filtered.filter(result =>
+      result.judul.toLowerCase().includes(res)
+    );
+    setData(results);
+  }, [res]);
+
+  onchange = e => {
+    setRes(e.target.value);
+  };
   console.log(data);
 
   const showArticle = () => {
-    return data.map(data => {
+    return data.map((data, i) => {
       if (data.status === true) {
         return (
-          <div className="card">
+          <div key={i} className="card">
             <div className="container text-right"></div>
             <div className="card-header">
               <h4>
@@ -40,7 +55,9 @@ function Artikel() {
               </p>
               <p className="card-text">
                 <small className="text-muted">
-                  {data.createdAt}: someone update with userid {data.userId}
+                  <IoIosCalendar />{" "}
+                  {moment(data.createdAt).format("DD/MM/YYYY")}: someone update
+                  with userid {data.userId}
                 </small>
               </p>
             </div>
@@ -50,6 +67,12 @@ function Artikel() {
     });
   };
 
-  return <tbody>{showArticle()}</tbody>;
+  return (
+    <div className="text-left">
+      <input type="text" placeholder="search" value={res} onChange={onchange} />
+
+      <tbody>{showArticle()}</tbody>
+    </div>
+  );
 }
 export default Artikel;

@@ -2,6 +2,7 @@ import React, { useState, useMemo } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { IoIosHammer } from "react-icons/io";
 
 function User() {
   const [data, setData] = useState({ user: [] });
@@ -27,6 +28,36 @@ function User() {
     }
     // console.log(data);
   }, []);
+
+  function Blockuser(id) {
+    const token = JSON.parse(
+      sessionStorage.getItem("persisted_state_hook:token")
+    );
+    axios({
+      method: "put",
+      url: `http://127.0.0.1:7000/users/${id}`,
+      headers: {
+        Authorization: token.token.accessToken
+      },
+      data: { status: false }
+    });
+    window.location.reload(false);
+  }
+
+  function Activeuser(id) {
+    const token = JSON.parse(
+      sessionStorage.getItem("persisted_state_hook:token")
+    );
+    axios({
+      method: "put",
+      url: `http://127.0.0.1:7000/users/${id}`,
+      headers: {
+        Authorization: token.token.accessToken
+      },
+      data: { status: true }
+    });
+    window.location.reload(false);
+  }
 
   if (!token) {
     return <Redirect to="/login" />;
@@ -55,12 +86,20 @@ function User() {
             {(() => {
               if (user.status === true) {
                 return (
-                  <button className="button btn-sm bg-primary">ACTIVE</button>
+                  <button
+                    className="btn bg-primary btn-sm"
+                    onClick={() => Blockuser(user.id)}
+                  >
+                    active
+                  </button>
                 );
-              } else {
+              } else if (user.status === false) {
                 return (
-                  <button className="button btn-sm bg-danger" disabled>
-                    BLOCK
+                  <button
+                    className="btn bg-danger btn-sm"
+                    onClick={() => Activeuser(user.id)}
+                  >
+                    block
                   </button>
                 );
               }
@@ -68,7 +107,9 @@ function User() {
           </td>
           <td>
             <Link to={"/update/users/" + user.id}>
-              <button className="button bg-primary">Edit</button>
+              {/* <button className="button bg-primary"> */}
+              <IoIosHammer />
+              {/* </button> */}
             </Link>
           </td>
         </tr>
@@ -77,9 +118,9 @@ function User() {
   };
   return (
     <div>
-      <h3 className="title bg-light">List user </h3>
+      <h3 className="container title bg-light">List user </h3>
       <div>
-        <table className="table table-striped table-dark">
+        <table className="container table table-striped table-dark">
           <tr>
             <th>ID</th>
             <th>Username</th>

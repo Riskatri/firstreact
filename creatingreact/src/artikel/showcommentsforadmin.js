@@ -1,8 +1,7 @@
 import React, { useState, useMemo } from "react";
 import axios from "axios";
 import { Redirect, Link } from "react-router-dom";
-
-// import { Link } from "react-router-dom";
+import { IoIosHammer, IoIosCloseCircle } from "react-icons/io";
 
 function Comment(props) {
   const [data, setData] = useState([]);
@@ -57,13 +56,10 @@ function Comment(props) {
       return (
         <div className="prof card ">
           <div className="container text-right">
-            <button
-              className="btn btn-outline-dark btn-sm"
-              onClick={() => DeleteComment(data.id)}
-            >
-              x
-            </button>
-            <Link to={`/edit/comments/${data.id}`}> edit </Link>
+            <IoIosCloseCircle onClick={() => DeleteComment(data.id)} />
+            <Link to={`/edit/comments/${data.id}`}>
+              <IoIosHammer />
+            </Link>
             <div className="card-header text-center">
               <p> comment list on article {data.artikelId}</p>
               <p className="card-text">

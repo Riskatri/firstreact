@@ -57,11 +57,9 @@ function Login() {
   } else {
     return (
       <div className="prof">
-        {/* <div className="card-header bg-light text-dark">Login</div> */}
         <div className="card-body ">
           <form onSubmit={e => e.preventDefault()}>
             <div class="form-group">
-              {/* <label>Username </label> */}
               <input
                 value={form.username}
                 type="text"
@@ -78,8 +76,6 @@ function Login() {
               {errors.username && errors.username.message}
             </div>
             <div class="form-group">
-              {/* <label>Password </label> */}
-
               <input
                 value={form.password}
                 type="password"
