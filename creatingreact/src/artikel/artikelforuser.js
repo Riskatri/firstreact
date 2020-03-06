@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { IoIosCalendar } from "react-icons/io";
+import { IoIosCalendar, IoIosSearch } from "react-icons/io";
 import moment from "moment";
 
 function Artikel(props) {
@@ -69,8 +69,8 @@ function Artikel(props) {
                 <i> {artikel.isi}</i> <br />
                 <small className="text-muted">
                   <IoIosCalendar />{" "}
-                  {moment(data.createdAt).format("DD/MM/YYYY")} : someone update
-                  with userid {artikel.userId}
+                  {moment(data.createdAt).format("DD/MM/YYYY")} <br />
+                  {artikel.user.name} update
                 </small>
               </p>
             </div>
@@ -92,6 +92,7 @@ function Artikel(props) {
         <button className="button">see your article</button>
       </Link>
       <div className="container text-left">
+        <IoIosSearch />
         <input
           type="text"
           placeholder="search"

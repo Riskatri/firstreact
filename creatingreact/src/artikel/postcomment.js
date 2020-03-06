@@ -3,7 +3,7 @@ import axios from "axios";
 import "../userProfile/profile.css";
 // import Artikel from "./artikelbyid";
 
-class Update extends React.Component {
+class Comment extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,12 +38,13 @@ class Update extends React.Component {
       if (result.status === 201) {
         alert("comment successfully!");
       } else {
-        throw new Error("Failed to update data!");
+        throw new Error("Failed to comment!");
       }
     } catch (err) {
       console.log(err);
     }
   };
+
   render() {
     const { isi_comment } = this.state;
 
@@ -77,4 +78,4 @@ class Update extends React.Component {
     );
   }
 }
-export default Update;
+export default Comment;

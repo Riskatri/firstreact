@@ -1,23 +1,23 @@
 import React from "react";
 import { Container, Col } from "reactstrap";
 import Navigation from "../layout/navigation";
-import desktopImage from "../userProfile/fisikabg.jpeg";
-import mobileImage from "../userProfile/fisikabg.jpeg";
+// import desktopImage from "../userProfile/fisikabg.jpeg";
+// import mobileImage from "../userProfile/fisikabg.jpeg";
 
 const Main = props => {
-  const imageUrl = window.innerWidth >= 650 ? desktopImage : mobileImage;
+  // const imageUrl = window.innerWidth >= 650 ? desktopImage : mobileImage;
   return (
-    <div className="App" style={{ backgroundImage: `url(${imageUrl})` }}>
-      <>
-        <Navigation />
-        <Container fluid={true} className="mt-2">
-          <Col>{props.children}</Col>
-          <Col className="home">
-            <strong> &copy;riskatri_h </strong>
-          </Col>
-        </Container>
-      </>
-    </div>
+    // <div className="App" style={{ backgroundImage: `url(${imageUrl})` }}>
+    <>
+      <Navigation />
+      <Container className="mt-2">
+        <Col>{props.children}</Col>
+        <Col className="home">
+          <strong> &copy;riskatri_h </strong>
+        </Col>
+      </Container>
+    </>
+    // </div>
   );
 };
 export default Main;

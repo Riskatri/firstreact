@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from "react";
 import axios from "axios";
-import { IoIosCalendar } from "react-icons/io";
+import { IoIosCalendar, IoIosSearch, IoIosShareAlt } from "react-icons/io";
 import moment from "moment";
 
 function Artikel() {
@@ -42,25 +42,25 @@ function Artikel() {
     return data.map((data, i) => {
       if (data.status === true) {
         return (
-          <div key={i} className="card">
+          <div key={i} className="jumbotron">
             <div className="container text-right"></div>
-            <div className="card-header">
+            <div className="display-4">
               <h4>
                 {data.id}. {data.judul}
               </h4>
             </div>
-            <div className="card-body">
-              <p className="card-text">
-                <i> {data.isi}</i>
-              </p>
-              <p className="card-text">
-                <small className="text-muted">
-                  <IoIosCalendar />{" "}
-                  {moment(data.createdAt).format("DD/MM/YYYY")}: someone update
-                  with userid {data.userId}
-                </small>
-              </p>
-            </div>
+            <hr />
+
+            <p className="my-4">
+              <i> {data.isi}</i>
+            </p>
+            <p className="my-4">
+              <small className="text-muted">
+                <IoIosCalendar /> {moment(data.createdAt).format("DD/MM/YYYY")}:{" "}
+                {data.user.name} update with userid {data.userId}{" "}
+                <IoIosShareAlt />
+              </small>
+            </p>
           </div>
         );
       }
@@ -69,8 +69,8 @@ function Artikel() {
 
   return (
     <div className="text-left">
+      <IoIosSearch />
       <input type="text" placeholder="search" value={res} onChange={onchange} />
-
       <tbody>{showArticle()}</tbody>
     </div>
   );

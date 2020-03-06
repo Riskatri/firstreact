@@ -10,7 +10,7 @@ const Home = () => {
       <div className="text-light">
         <Clock />
         <h1>
-          <i> Welcome to fun physics </i>
+          <i bg-secondary> Welcome to fun physics </i>
         </h1>
         <p> You can create and read article about physics</p>
       </div>

@@ -9,10 +9,10 @@
 }
 .home {
   padding: 10px;
-  text-align: center;
+  text-align: left;
   margin-bottom: 30px;
   margin-top: 30px;
-  background-color: gray;
+  /* background-color: gray; */
 }
 .tulis {
   font-family: Arial;

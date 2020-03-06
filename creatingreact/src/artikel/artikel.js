@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { IoIosCalendar, IoIosCloseCircle } from "react-icons/io";
+import { IoIosCalendar, IoIosCloseCircle, IoIosSearch } from "react-icons/io";
 import moment from "moment";
 
 function Artikel(props) {
@@ -92,14 +92,16 @@ function Artikel(props) {
               <p className="card-text">
                 <i> {artikel.isi}</i> <br />
                 <small className="text-muted">
-                  <IoIosCalendar />{" "}
-                  {moment(data.createdAt).format("DD/MM/YYYY")} : someone update
-                  with userid {artikel.userId}
+                  <IoIosCalendar />
+                  {moment(data.createdAt).format("DD/MM/YYYY")} :
+                  {artikel.user.name} update with userid {artikel.userId}
                 </small>
               </p>
             </div>
             <Link to={`/ambil/articles/${artikel.id}`}>
-              <i className="text-center primary"> show more</i>
+              <div className="text-center primary">
+                <i> show more</i>
+              </div>
             </Link>
           </div>
         );
@@ -109,16 +111,25 @@ function Artikel(props) {
 
   return (
     <div className="container text-right">
-      <Link to={"/post/articles/" + token.token.id}>
-        <button className="button">+ articles</button>
-      </Link>
+      <div class="jumbotron">
+        <h1 class="display-4">Hello, Scientist!</h1>
+        <p class="lead">
+          This is a blog to create something about physics. lets try!.
+        </p>
+        <hr class="my-4" />{" "}
+        <Link to={"/post/articles/" + token.token.id}>
+          <i className="text-primary">ADD ARTICLE</i>
+        </Link>
+      </div>
       <div className="container text-left">
+        <IoIosSearch />
         <input
           type="text"
           placeholder="search"
           value={res}
           onChange={onchange}
         />
+
         <tbody>{showArticle()}</tbody>
       </div>
     </div>

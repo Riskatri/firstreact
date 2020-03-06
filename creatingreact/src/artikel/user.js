@@ -90,7 +90,7 @@ function User() {
                     className="btn bg-primary btn-sm"
                     onClick={() => Blockuser(user.id)}
                   >
-                    active
+                    block
                   </button>
                 );
               } else if (user.status === false) {
@@ -99,7 +99,7 @@ function User() {
                     className="btn bg-danger btn-sm"
                     onClick={() => Activeuser(user.id)}
                   >
-                    block
+                    active
                   </button>
                 );
               }

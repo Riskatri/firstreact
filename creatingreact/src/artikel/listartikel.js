@@ -91,7 +91,7 @@ function Article() {
                     className="btn bg-primary btn-sm"
                     onClick={() => HideArticle(artikel.id)}
                   >
-                    show
+                    hide
                   </button>
                 );
               } else if (artikel.status === false) {
@@ -100,7 +100,7 @@ function Article() {
                     className="btn bg-danger btn-sm"
                     onClick={() => ShowArticle(artikel.id)}
                   >
-                    hide
+                    show
                   </button>
                 );
               }
