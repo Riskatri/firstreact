@@ -3,6 +3,7 @@ import axios from "axios";
 import createPersistedState from "@plq/use-persisted-state";
 import { Redirect } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import mainLogo from "../userProfile/einstein.jpeg";
 
 function Login() {
   const [usePersistedState] = createPersistedState(
@@ -56,52 +57,56 @@ function Login() {
     return <Redirect to="/" />;
   } else {
     return (
-      <div className="prof">
-        <div className="card-body ">
-          <form onSubmit={e => e.preventDefault()}>
-            <div class="form-group">
-              <input
-                value={form.username}
-                type="text"
-                ref={register({
-                  required: "Please, fill your username",
-                  minLength: 6,
-                  message: "username harus minimal 6"
-                })}
-                name="username"
-                onChange={handleChange}
-                class="form-control"
-                placeholder="username"
-              />
-              {errors.username && errors.username.message}
-            </div>
-            <div class="form-group">
-              <input
-                value={form.password}
-                type="password"
-                ref={register({
-                  required: "You must specify a password",
-                  minLength: {
-                    value: 5,
-                    message: "Password must have at least 5 characters"
-                  }
-                })}
-                name="password"
-                onChange={handleChange}
-                class="form-control"
-                placeholder="password"
-              />
-              {errors.password && <p>{errors.password.message}</p>}
-            </div>
+      <div className="container row-5">
+        <img src={mainLogo} alt="Einstein" width="150px" className="home" />
+        <i> "Lets Login with me"</i>
+        <div className="container col-5">
+          <div className="card-body ">
+            <form onSubmit={e => e.preventDefault()}>
+              <div class="form-group">
+                <input
+                  value={form.username}
+                  type="text"
+                  ref={register({
+                    required: "Please, fill your username",
+                    minLength: 6,
+                    message: "username harus minimal 6"
+                  })}
+                  name="username"
+                  onChange={handleChange}
+                  class="form-control"
+                  placeholder="username"
+                />
+                {errors.username && errors.username.message}
+              </div>
+              <div class="form-group">
+                <input
+                  value={form.password}
+                  type="password"
+                  ref={register({
+                    required: "You must specify a password",
+                    minLength: {
+                      value: 5,
+                      message: "Password must have at least 5 characters"
+                    }
+                  })}
+                  name="password"
+                  onChange={handleChange}
+                  class="form-control"
+                  placeholder="password"
+                />
+                {errors.password && <p>{errors.password.message}</p>}
+              </div>
 
-            <button
-              type="submit"
-              className="btn btn-dark"
-              onClick={handleSubmit(handlerSubmit)}
-            >
-              LOGIN
-            </button>
-          </form>
+              <button
+                type="submit"
+                className="btn btn-dark"
+                onClick={handleSubmit(handlerSubmit)}
+              >
+                LOGIN
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     );

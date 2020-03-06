@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { IoIosCalendar, IoIosSearch } from "react-icons/io";
 import moment from "moment";
+import mainLogo from "../userProfile/lovephysics.jpeg";
 
 function Artikel(props) {
   const [data, setData] = useState([]);
@@ -58,27 +59,36 @@ function Artikel(props) {
     return data.map((artikel, i) => {
       if (artikel.status === true) {
         return (
-          <div key={i} className="home card">
-            <div className="card-header border-primary">
-              <h4>
-                {artikel.id}. {artikel.judul}
-              </h4>
-            </div>
-            <div className="card-body">
-              <p className="card-text">
-                <i> {artikel.isi}</i> <br />
-                <small className="text-muted">
-                  <IoIosCalendar />{" "}
-                  {moment(data.createdAt).format("DD/MM/YYYY")} <br />
-                  {artikel.user.name} update
-                </small>
-              </p>
-            </div>
-            <Link to={`/ambil/articles/${artikel.id}`}>
-              <div className="text-center primary">
-                <i> show more</i>
+          <div className="row">
+            <img
+              src={mainLogo}
+              alt="Einstein"
+              width="200px"
+              className="home rounded-circle "
+            />
+
+            <div key={i} className="col-8">
+              <div className="card-header border-primary">
+                <h4>
+                  {artikel.id}. {artikel.judul}
+                </h4>
               </div>
-            </Link>
+              <div className="card-body">
+                <p className="card-text">
+                  <i> {artikel.isi}</i> <br />
+                  <small className="text-muted">
+                    <IoIosCalendar />{" "}
+                    {moment(data.createdAt).format("DD/MM/YYYY")} <br />
+                    {artikel.user.name} update
+                  </small>
+                </p>
+              </div>
+              <Link to={`/ambil/articles/${artikel.id}`}>
+                <div className="text-center primary">
+                  <i> show more</i>
+                </div>
+              </Link>
+            </div>
           </div>
         );
       }
@@ -108,6 +118,7 @@ function Artikel(props) {
           placeholder="search"
           value={res}
           onChange={onchange}
+          className="home"
         />
         <tbody>{showArticle()}</tbody>
       </div>
