@@ -12,7 +12,7 @@ const Main = props => {
       <Navigation />
       <Container className="mt-2">
         <Col>{props.children}</Col>
-        <Col className="home">
+        <Col className="text-center">
           <strong> &copy;riskatri_h </strong>
         </Col>
       </Container>
