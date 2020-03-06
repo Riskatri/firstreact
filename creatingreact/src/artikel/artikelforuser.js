@@ -98,7 +98,7 @@ function Artikel(props) {
   return (
     <div className="container text-right">
       <div class="jumbotron">
-        <h1 class="display-4">Hello, Scientist!</h1>
+        <h1 class="display-4">Hello, {token.token.username}</h1>
         <p class="lead">
           This is a blog to create something about physics. lets try!.
         </p>
