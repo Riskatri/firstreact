@@ -85,9 +85,17 @@ function Artikel(props) {
 
   return (
     <div className="container text-right">
-      <Link to={"/post/articles/" + token.token.id}>
-        <button className="button">+ articles</button>
-      </Link>
+      <div class="jumbotron">
+        <h1 class="display-4">Hello, Scientist!</h1>
+        <p class="lead">
+          This is a blog to create something about physics. lets try!.
+        </p>
+        <hr class="my-4" />
+        <Link to={"/post/articles/" + token.token.id}>
+          <i className="text-primary">ADD ARTICLE</i>
+        </Link>
+      </div>
+
       <Link to={"/get/articles/" + token.token.id}>
         <button className="button">see your article</button>
       </Link>

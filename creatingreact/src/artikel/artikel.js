@@ -116,7 +116,7 @@ function Artikel(props) {
         <p class="lead">
           This is a blog to create something about physics. lets try!.
         </p>
-        <hr class="my-4" />{" "}
+        <hr class="my-4" />
         <Link to={"/post/articles/" + token.token.id}>
           <i className="text-primary">ADD ARTICLE</i>
         </Link>
