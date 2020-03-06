@@ -24,7 +24,7 @@ function Navigation() {
   const toggle = () => setIsOpen(!isOpen);
   if (!token) {
     return (
-      <Navbar color="lnavbar navbar-dark bg-dark" light expand="md">
+      <Navbar color="lnavbar navbar-right bg-info" light expand="md">
         <NavbarBrand href={"/"}>Blog</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -50,7 +50,7 @@ function Navigation() {
     );
   } else if (token.token.admin === true) {
     return (
-      <Navbar color="lnavbar navbar-dark bg-dark" light expand="md">
+      <Navbar color="lnavbar navbar text-right bg-info" light expand="md">
         <NavbarBrand href={"/"}>blog</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -86,7 +86,7 @@ function Navigation() {
     );
   } else if (token.token.admin === false) {
     return (
-      <Navbar color="lnavbar navbar-dark bg-dark" light expand="md">
+      <Navbar color="lnavbar navbar-right bg-info" light expand="md">
         <NavbarBrand href={"/"}>blog</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
