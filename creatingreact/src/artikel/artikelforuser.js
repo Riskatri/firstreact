@@ -75,7 +75,9 @@ function Artikel(props) {
               </p>
             </div>
             <Link to={`/ambil/articles/${artikel.id}`}>
-              <i className="text-center primary"> show more</i>
+              <div className="text-center primary">
+                <i> show more</i>
+              </div>
             </Link>
           </div>
         );
