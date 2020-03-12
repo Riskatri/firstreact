@@ -44,3 +44,11 @@
   font-size: 15px;
   width: 500px;
 }
+.post-content {
+  padding: var(--sky);
+  position: relative;
+  position: absolute;
+  bottom: 0%;
+  left: 15vw;
+  border-radius: 3rem;
+}

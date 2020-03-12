@@ -70,11 +70,6 @@ function Navigation() {
                 status articles
               </NavLink>
             </NavItem>
-            {/* <NavItem>
-              <NavLink to="/post/articles/:id" tag={RRNavLink}>
-                create articles
-              </NavLink>
-            </NavItem> */}
             <NavItem>
               <NavLink onClick={logout} to="/login" tag={RRNavLink}>
                 Logout
@@ -96,11 +91,6 @@ function Navigation() {
                 articles
               </NavLink>
             </NavItem>
-            {/* <NavItem>
-              <NavLink to="/get/articles/:id" tag={RRNavLink}>
-                user articles
-              </NavLink>
-            </NavItem> */}
             <NavItem>
               <NavLink onClick={logout} to="/login" tag={RRNavLink}>
                 Logout

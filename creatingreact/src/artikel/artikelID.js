@@ -9,6 +9,7 @@ import {
 } from "react-icons/io";
 import moment from "moment";
 import mainLogo from "../userProfile/einstein.jpeg";
+import "../userProfile/profile.css";
 
 function Artikel(props) {
   const [data, setData] = useState([]);
@@ -136,7 +137,7 @@ function Artikel(props) {
   const showArticle = () => {
     return data.map((data, i) => {
       return (
-        <div key={i} className="card">
+        <div key={i} className="container">
           <div className="container text-right"></div>
           <div className="card-header bg-info">
             <h4>
@@ -153,10 +154,7 @@ function Artikel(props) {
               </small>
             </p>
           </div>
-          <h6 className="card-header border-primary">
-            {" "}
-            <IoMdChatbubbles /> Comments:{" "}
-          </h6>
+
           {showComments()}
         </div>
       );
@@ -165,8 +163,14 @@ function Artikel(props) {
 
   const showComments = () => {
     return data.map(({ comments }) => {
+      let total_komentar = comments.length + 0;
       return (
         <div className="container">
+          <h6 className="card-header border-primary">
+            {" "}
+            <IoMdChatbubbles /> {total_komentar} Comments :
+          </h6>
+
           {comments.map((comments, i) => {
             if (comments.status === true) {
               return (

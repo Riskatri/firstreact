@@ -2,8 +2,16 @@ import React, { useState, useMemo, useEffect } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { IoIosCalendar, IoIosCloseCircle, IoIosSearch } from "react-icons/io";
+import {
+  IoIosCalendar,
+  IoIosCloseCircle,
+  IoIosSearch,
+  IoMdPerson,
+  IoMdReturnRight
+} from "react-icons/io";
 import moment from "moment";
+import mainLogo from "../userProfile/blogging.png";
+import "../userProfile/profile.css";
 
 function Artikel(props) {
   const [data, setData] = useState([]);
@@ -74,7 +82,7 @@ function Artikel(props) {
     return data.map((artikel, i) => {
       if (artikel.status === true) {
         return (
-          <div key={i} className="home card">
+          <div key={i} className="container">
             <div className="container text-right">
               <button
                 className="btn btn-outline-dark btn-sm"
@@ -83,24 +91,30 @@ function Artikel(props) {
                 <IoIosCloseCircle />
               </button>
             </div>
-            <div className="card-header border-primary">
+
+            <div className="post-title card-header border-primary">
               <h4>
                 {artikel.id}. {artikel.judul}
               </h4>
+              <img src={mainLogo} alt="physics" width="1000px" height="500px" />
+              <div className="text-center bg-info rounded text-white">
+                <h7>
+                  <IoIosCalendar />
+                  {moment(data.createdAt).format("DD/MM/YYYY")} |
+                  <IoMdPerson /> {artikel.user.name} update with userid
+                  {artikel.userId}
+                </h7>{" "}
+              </div>
             </div>
+
             <div className="card-body">
               <p className="card-text">
-                <i> {artikel.isi}</i> <br />
-                <small className="text-muted">
-                  <IoIosCalendar />
-                  {moment(data.createdAt).format("DD/MM/YYYY")} :
-                  {artikel.user.name} update with userid {artikel.userId}
-                </small>
+                <i> {artikel.isi.substr(0, 250) + " ..."}</i> <br />
               </p>
             </div>
             <Link to={`/ambil/articles/${artikel.id}`}>
               <div className="text-center primary">
-                <i> show more</i>
+                <i> show more </i> <IoMdReturnRight />
               </div>
             </Link>
           </div>

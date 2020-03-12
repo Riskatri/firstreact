@@ -119,7 +119,7 @@ function Article() {
     <div>
       <h3 className="title bg-light">List Articles</h3>
       <div>
-        <table className="table table-striped table-dark">
+        <table className="table table-striped table-dark text-center">
           <tr>
             <th>ID</th>
             <th>judul</th>
