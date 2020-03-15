@@ -42,12 +42,19 @@ function Artikel() {
     return data.map((data, i) => {
       if (data.status === true) {
         return (
-          <div key={i} className="jumbotron">
+          <div key={i} className="jumbotron home text-justify">
             <div className="container text-right"></div>
             <div className="display-4">
               <h4>
                 {data.id}. {data.judul}
               </h4>
+              <img
+                src={data.img}
+                alt=""
+                class="img"
+                width="1000px"
+                height="400px"
+              />
             </div>
             <hr />
 
@@ -71,6 +78,7 @@ function Artikel() {
     <div className="text-left">
       <IoIosSearch />
       <input type="text" placeholder="search" value={res} onChange={onchange} />
+
       <tbody>{showArticle()}</tbody>
     </div>
   );

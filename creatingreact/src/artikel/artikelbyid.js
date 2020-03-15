@@ -45,6 +45,13 @@ function Artikel(props) {
             <div className="card-header ">
               <h4>
                 {data.id}. {data.judul}
+                <img
+                  src={data.img}
+                  alt=""
+                  class="img"
+                  width="1000px"
+                  height="400px"
+                />
               </h4>
             </div>
             <div className="card-body">

@@ -10,7 +10,7 @@ import {
   IoMdReturnRight
 } from "react-icons/io";
 import moment from "moment";
-import mainLogo from "../userProfile/blogging.png";
+
 import "../userProfile/profile.css";
 
 function Artikel(props) {
@@ -82,22 +82,35 @@ function Artikel(props) {
     return data.map((artikel, i) => {
       if (artikel.status === true) {
         return (
-          <div key={i} className="container">
+          <div key={i} className="container text-justify">
             <div className="container text-right">
               <button
                 className="btn btn-outline-dark btn-sm"
-                onClick={() => DeleteArticle(artikel.id)}
+                onClick={() => {
+                  if (
+                    window.confirm(
+                      "Are you sure you wish to delete this article?"
+                    )
+                  )
+                    DeleteArticle(artikel.id);
+                }}
               >
                 <IoIosCloseCircle />
               </button>
             </div>
 
-            <div className="post-title card-header border-primary">
+            <div className="card-header border-primary">
               <h4>
                 {artikel.id}. {artikel.judul}
               </h4>
-              <img src={mainLogo} alt="physics" width="1000px" height="500px" />
-              <div className="text-center bg-info rounded text-white">
+              <img
+                src={artikel.img}
+                alt=""
+                class="img"
+                width="1000px"
+                height="400px"
+              />
+              <div className="text-center post-content">
                 <h7>
                   <IoIosCalendar />
                   {moment(data.createdAt).format("DD/MM/YYYY")} |

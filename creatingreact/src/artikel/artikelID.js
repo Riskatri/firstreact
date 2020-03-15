@@ -2,11 +2,7 @@ import React, { useState, useMemo } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
-import {
-  IoIosCalendar,
-  IoIosCloseCircle,
-  IoMdChatbubbles
-} from "react-icons/io";
+import { IoIosCalendar, IoMdTrash, IoMdChatbubbles } from "react-icons/io";
 import moment from "moment";
 import mainLogo from "../userProfile/einstein.jpeg";
 import "../userProfile/profile.css";
@@ -115,6 +111,7 @@ function Artikel(props) {
 
       if (result.status === 201) {
         alert("comment successfully!");
+        window.location.reload(false);
       } else {
         throw new Error("Failed to comment!");
       }
@@ -137,7 +134,7 @@ function Artikel(props) {
   const showArticle = () => {
     return data.map((data, i) => {
       return (
-        <div key={i} className="container">
+        <div key={i} className="container text-justify">
           <div className="container text-right"></div>
           <div className="card-header bg-info">
             <h4>
@@ -145,7 +142,7 @@ function Artikel(props) {
             </h4>
           </div>
           <div className="card-body">
-            <p className="card-text">
+            <p className="card-text paragraf">
               <i> {data.isi}</i> <br></br>
               <small className="text-muted">
                 <IoIosCalendar /> {moment(data.createdAt).format("DD/MM/YYYY")}:
@@ -187,9 +184,18 @@ function Artikel(props) {
                           comments.userId === token.token.id
                         ) {
                           return (
-                            <IoIosCloseCircle
-                              onClick={() => DeleteComment(comments.id)}
-                            />
+                            <div className="text-right">
+                              <IoMdTrash
+                                onClick={() => {
+                                  if (
+                                    window.confirm(
+                                      "Are you sure you wish to delete this comment?"
+                                    )
+                                  )
+                                    DeleteComment(comments.id);
+                                }}
+                              />
+                            </div>
                           );
                         }
                       })()}
@@ -199,28 +205,32 @@ function Artikel(props) {
                           token.token.admin === true
                         ) {
                           return (
-                            <Link>
-                              <small
-                                className="text-primary"
-                                onClick={() => HideComment(comments.id)}
-                              >
-                                hide
-                              </small>
-                            </Link>
+                            <div className="text-right">
+                              <Link>
+                                <small
+                                  className="text-primary"
+                                  onClick={() => HideComment(comments.id)}
+                                >
+                                  hide
+                                </small>
+                              </Link>
+                            </div>
                           );
                         } else if (
                           comments.status === false &&
                           token.token.admin === true
                         ) {
                           return (
-                            <Link>
-                              <small
-                                className="text-primary"
-                                onClick={() => ShowComments(comments.id)}
-                              >
-                                show
-                              </small>
-                            </Link>
+                            <div className="text-right">
+                              <Link>
+                                <small
+                                  className="text-primary"
+                                  onClick={() => ShowComments(comments.id)}
+                                >
+                                  show
+                                </small>
+                              </Link>
+                            </div>
                           );
                         }
                       })()}
@@ -243,7 +253,7 @@ function Artikel(props) {
                           comments.userId === token.token.id
                         ) {
                           return (
-                            <IoIosCloseCircle
+                            <IoMdTrash
                               onClick={() => DeleteComment(comments.id)}
                             />
                           );
