@@ -19,7 +19,7 @@ function Register() {
   const handlerSubmit = async e => {
     e.preventDefault();
     try {
-      const result = await axios.post("http://127.0.0.1:8000/register", {
+      const result = await axios.post("http://127.0.0.1:8015/register", {
         name: form.name,
         username: form.username,
         email: form.email,
