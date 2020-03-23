@@ -82,7 +82,7 @@ function Artikel(props) {
     return data.map((artikel, i) => {
       if (artikel.status === true) {
         return (
-          <div key={i} className="container text-justify">
+          <div key={i} className=" col-11">
             <div className="container text-right">
               <button
                 className="btn btn-outline-dark btn-sm"
@@ -107,21 +107,21 @@ function Artikel(props) {
                 src={artikel.img}
                 alt=""
                 class="img"
-                width="1000px"
-                height="400px"
+                width="600px"
+                height="300px"
               />
-              <div className="text-center post-content">
+              <div className="post-content">
                 <h7>
                   <IoIosCalendar />
                   {moment(data.createdAt).format("DD/MM/YYYY")} |
                   <IoMdPerson /> {artikel.user.name} update with userid
                   {artikel.userId}
-                </h7>{" "}
+                </h7>
               </div>
             </div>
 
             <div className="card-body">
-              <p className="card-text">
+              <p className="card-text-center">
                 <i> {artikel.isi.substr(0, 250) + " ..."}</i> <br />
               </p>
             </div>
@@ -156,7 +156,19 @@ function Artikel(props) {
           value={res}
           onChange={onchange}
         />
-
+        <div id="sidebar">
+          <h2>What is an All About Physics? </h2>
+          <p>
+            all about physics is a web to understand physics phenomenon,and
+            knowledge about scientist{" "}
+          </p>
+          <h2> artikel berdasarkan kategori </h2>
+          <ul>
+            <li> Scientist </li>
+            <li> phenomenon </li>
+            <li> fun physics </li>
+          </ul>
+        </div>
         <tbody>{showArticle()}</tbody>
       </div>
     </div>

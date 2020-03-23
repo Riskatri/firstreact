@@ -202,18 +202,6 @@ function PostUsingHook(props) {
           />
         </div>
         <br></br>
-        {/* <div className="input-group">
-          <div className="input-group-prepend">
-            <span className="input-group-text">articles</span>
-          </div>
-
-          <textarea
-            className="form-control"
-            value={form.isi}
-            onChange={updateField}
-            name="isi"
-            placeholder="articles"
-          ></textarea> */}
 
         <div class="form-group">
           <label for="isi">Artciles</label>

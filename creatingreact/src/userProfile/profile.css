@@ -48,7 +48,7 @@
   position: absolute;
   /* position: absolute; */
   bottom: 0%;
-  left: 20vw;
+  left: 5vw;
   border-radius: 3rem;
   background-color: aqua;
   width: 450px;
@@ -61,4 +61,25 @@
 
 .paragraf {
   text-indent: 100px;
+}
+
+#sidebar {
+  width: 270px;
+  float: right;
+  border: #000000;
+}
+#sidebar h2 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+#sidebar p {
+  line-height: 20px;
+  color: #636363;
+}
+#sidebar ul {
+  margin-left: 20px;
+}
+#sidebar ul li a {
+  color: #636363;
+  text-decoration: none;
 }
