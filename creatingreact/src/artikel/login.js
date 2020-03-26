@@ -20,6 +20,8 @@ function Login() {
     redirect: true
   });
 
+  const [status, setStatus] = useState({});
+
   const handlerSubmit = async e => {
     try {
       const result = await axios.post("http://127.0.0.1:7000/login", {
@@ -28,13 +30,21 @@ function Login() {
       });
       getToken(result.data);
       setAdmin(result.data.Admin);
+      setStatus(result.status);
       console.log(result.data.accessToken);
       if (result.status === 200) {
         alert("login sucessfuly!");
         window.location.reload();
       }
     } catch (err) {
-      console.log(err);
+      setStatus(err.response.status);
+      if (err.response.status === 404) {
+        alert("Username Not Found");
+      } else if (err.response.status === 401) {
+        alert("Invalid Password");
+      } else {
+        alert("Your Account Blocked !!");
+      }
     }
   };
   const handleChange = e => {

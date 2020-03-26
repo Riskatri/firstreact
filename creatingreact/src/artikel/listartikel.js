@@ -2,7 +2,7 @@ import React, { useState, useMemo } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { IoIosHammer } from "react-icons/io";
+import { IoIosHammer, IoMdTrash } from "react-icons/io";
 
 function Article() {
   const [data, setData] = useState({ artikel: [] });
@@ -59,6 +59,22 @@ function Article() {
     window.location.reload(false);
   }
 
+  function DeleteArticle(id) {
+    const token = JSON.parse(
+      sessionStorage.getItem("persisted_state_hook:token")
+    );
+    axios({
+      method: "delete",
+      url: `http://127.0.0.1:7000/articles/${id}`,
+      headers: {
+        Authorization: token.token.accessToken
+      },
+      data: data
+    });
+    alert("article has been delete");
+    window.location.reload(false);
+  }
+
   if (!token) {
     return <Redirect to="/login" />;
   }
@@ -70,7 +86,6 @@ function Article() {
         <tr key={id}>
           <td>{artikel.id}</td>
           <td>{artikel.judul}</td>
-          <td>{artikel.isi}</td>
           <td>{artikel.userId}</td>
           <td>
             {artikel.admin}
@@ -110,6 +125,19 @@ function Article() {
             <Link to={"/update/articles/" + artikel.id}>
               <IoIosHammer />
             </Link>
+            <button
+              className="btn btn-danger btn-sm"
+              onClick={() => {
+                if (
+                  window.confirm(
+                    "Are you sure you wish to delete this article?"
+                  )
+                )
+                  DeleteArticle(artikel.id);
+              }}
+            >
+              <IoMdTrash />
+            </button>
           </td>
         </tr>
       );
@@ -119,11 +147,10 @@ function Article() {
     <div>
       <h3 className="title bg-light">List Articles</h3>
       <div>
-        <table className="table table-striped table-dark text-center">
+        <table className="container table table-striped table-dark text-center">
           <tr>
             <th>ID</th>
             <th>judul</th>
-            <th>isi</th>
             <th>user id</th>
             <th>admin</th>
             <th>status</th>

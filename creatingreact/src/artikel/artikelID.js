@@ -2,7 +2,13 @@ import React, { useState, useMemo } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { IoIosCalendar, IoMdTrash, IoMdChatbubbles } from "react-icons/io";
+import {
+  IoIosCalendar,
+  IoMdTrash,
+  IoMdChatbubbles,
+  IoMdPerson,
+  IoMdReturnRight
+} from "react-icons/io";
 import moment from "moment";
 import mainLogo from "../userProfile/einstein.jpeg";
 import "../userProfile/profile.css";
@@ -131,27 +137,67 @@ function Artikel(props) {
     return <Redirect to="/login" />;
   }
 
-  const showArticle = () => {
-    return data.map((data, i) => {
-      return (
-        <div key={i} className="container text-justify">
-          <div className="container text-right"></div>
-          <div className="card-header bg-info">
-            <h4>
-              {data.id}. {data.judul}
-            </h4>
-          </div>
-          <div className="card-body">
-            <p className="card-text paragraf">
-              <i> {data.isi}</i> <br></br>
-              <small className="text-muted">
-                <IoIosCalendar /> {moment(data.createdAt).format("DD/MM/YYYY")}:
-                someone update with userid
-                {token.token.id} {data.name}
-              </small>
-            </p>
-          </div>
+  // const showArticle = () => {
+  //   return data.map((data, i) => {
+  //     return (
+  //       <div key={i} className="container text-justify">
+  //         <div className="container text-right"></div>
+  //         <div className="card-header bg-info">
+  //           <h4>
+  //             {data.id}. {data.judul}
+  //           </h4>
+  //         </div>
+  //         <div className="card-body">
+  //           <p className="card-text paragraf">
+  //             <i> {data.isi}</i>
+  //             <br></br>
+  //             <small className="text-muted">
+  //               <IoIosCalendar /> {moment(data.createdAt).format("DD/MM/YYYY")}:
+  //               someone update with userid
+  //               {token.token.id} {data.name}
+  //             </small>
+  //           </p>
+  //         </div>
 
+  //         {showComments()}
+  //       </div>
+  //     );
+  //   });
+  // };
+
+  const showArticle = () => {
+    return data.map((artikel, i) => {
+      return (
+        <div key={i} className="post-content">
+          <div className="post-image">
+            <div>
+              <center>
+                <img
+                  src={artikel.img}
+                  alt=""
+                  class="img"
+                  width="300px"
+                  height="300px"
+                />
+              </center>
+            </div>
+            <div className="post-info2 flex-row">
+              <span>
+                <IoIosCalendar />
+                {moment(data.createdAt).format("DD/MM/YYYY")}
+              </span>
+              <span>
+                <IoMdChatbubbles />
+                {artikel.comments.length} comments
+              </span>
+            </div>
+          </div>
+          <div className="post-title">
+            <h4>
+              {artikel.id}. {artikel.judul}
+            </h4>
+            <p> {artikel.isi}</p> <br />
+          </div>
           {showComments()}
         </div>
       );
@@ -164,7 +210,6 @@ function Artikel(props) {
       return (
         <div className="container">
           <h6 className="card-header border-primary">
-            {" "}
             <IoMdChatbubbles /> {total_komentar} Comments :
           </h6>
 
@@ -310,6 +355,7 @@ function Artikel(props) {
 
       <tbody>{showArticle()}</tbody>
       <div className="home">
+        <h2> Leave a Comment</h2>
         <form onSubmit={handlerSubmit}>
           <textarea
             class="form-control"
@@ -318,10 +364,11 @@ function Artikel(props) {
             onChange={updateField}
             name="isi_comment"
           />
-
-          <button type="submit" className="btn btn-primary">
-            add comment
-          </button>
+          <div className="home">
+            <button type="submit" className="btn btn-primary">
+              add comment
+            </button>
+          </div>
         </form>
       </div>
     </div>

@@ -48,7 +48,7 @@ function Register() {
     email: "",
     password: ""
   };
-  const { register, errors, handleSubmit } = useForm({
+  const { register, errors, handleSubmit, watch } = useForm({
     defaultValues
   });
 
@@ -56,10 +56,10 @@ function Register() {
     return <Redirect to="/login" />;
   }
   return (
-    <div className="row-5">
+    <div className=" container row-5">
       <img src={mainLogo} alt="Einstein" width="150px" className="home" />
       <i> "Lets Register with me"</i>
-      <div className="col-5">
+      <div className="container col-5">
         <div className="card-body">
           <form onSubmit={e => e.preventDefault()}>
             <div class="form-group">

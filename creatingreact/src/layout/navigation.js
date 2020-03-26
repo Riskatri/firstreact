@@ -25,9 +25,9 @@ function Navigation() {
   if (!token) {
     return (
       <Navbar color="lnavbar navbar-right bg-info" light expand="md">
-        <NavbarBrand href={"/"}>Blog</NavbarBrand>
+        <NavbarBrand href={"/"}>PHYSICS BLOG</NavbarBrand>
         <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
+        {/* <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
               <NavLink to="/guess/articles" tag={RRNavLink}>
@@ -45,7 +45,7 @@ function Navigation() {
               </NavLink>
             </NavItem>
           </Nav>
-        </Collapse>
+        </Collapse> */}
       </Navbar>
     );
   } else if (token.token.admin === true) {
