@@ -24,33 +24,16 @@ function Navigation() {
   const toggle = () => setIsOpen(!isOpen);
   if (!token) {
     return (
-      <Navbar color="lnavbar navbar-right bg-info" light expand="md">
-        <NavbarBrand href={"/"}>PHYSICS BLOG</NavbarBrand>
+      <Navbar color="lnavbar navbar-right bg-dark" light expand="md">
+        <NavbarBrand href={"/"} className="text-light">
+          PHYSICS BLOG
+        </NavbarBrand>
         <NavbarToggler onClick={toggle} />
-        {/* <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-            <NavItem>
-              <NavLink to="/guess/articles" tag={RRNavLink}>
-                articles
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/register" tag={RRNavLink}>
-                Register
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/login" tag={RRNavLink}>
-                Login
-              </NavLink>
-            </NavItem>
-          </Nav>
-        </Collapse> */}
       </Navbar>
     );
   } else if (token.token.admin === true) {
     return (
-      <Navbar color="lnavbar navbar text-right bg-info" light expand="md">
+      <Navbar color="lnavbar navbar text-right home" light expand="md">
         <NavbarBrand href={"/"}>blog</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -81,7 +64,7 @@ function Navigation() {
     );
   } else if (token.token.admin === false) {
     return (
-      <Navbar color="lnavbar navbar-right bg-info" light expand="md">
+      <Navbar color="lnavbar navbar-right home" light expand="md">
         <NavbarBrand href={"/"}>blog</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>

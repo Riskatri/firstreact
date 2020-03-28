@@ -37,32 +37,6 @@ function Artikel(props) {
 
   console.log(data);
 
-  // const showArticle = () => {
-  //   return data.map(data => {
-  //     return (
-  //       <div className="card">
-  //         <div className="container text-right"></div>
-  //         <div className="card-header border-primary">
-  //           <h4>
-  //             {data.id}. {data.judul}
-  //           </h4>
-  //         </div>
-  //         <div className="card-body">
-  //           <p className="card-text">
-  //             <i> {data.isi}</i>
-  //           </p>
-  //           <p className="card-text">
-  //             <small className="text-muted">
-  //               {moment(data.createdAt).format("DD/MM/YYYY")}: someone update
-  //               with userid {token.token.id}
-  //             </small>
-  //           </p>
-  //         </div>
-  //       </div>
-  //     );
-  //   });
-  // };
-
   const showArticle = () => {
     return data.map((artikel, i) => {
       return (
@@ -98,7 +72,7 @@ function Artikel(props) {
   };
 
   return (
-    <div className="container home text-justify">
+    <div className="container text-justify">
       <tbody>{showArticle()}</tbody>
     </div>
   );

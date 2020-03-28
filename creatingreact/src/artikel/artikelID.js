@@ -2,15 +2,10 @@ import React, { useState, useMemo } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
-import {
-  IoIosCalendar,
-  IoMdTrash,
-  IoMdChatbubbles,
-  IoMdPerson,
-  IoMdReturnRight
-} from "react-icons/io";
+import { IoIosCalendar, IoMdTrash, IoMdChatbubbles } from "react-icons/io";
 import moment from "moment";
 import mainLogo from "../userProfile/einstein.jpeg";
+import mainLogo2 from "../userProfile/prof.png";
 import "../userProfile/profile.css";
 
 function Artikel(props) {
@@ -137,34 +132,6 @@ function Artikel(props) {
     return <Redirect to="/login" />;
   }
 
-  // const showArticle = () => {
-  //   return data.map((data, i) => {
-  //     return (
-  //       <div key={i} className="container text-justify">
-  //         <div className="container text-right"></div>
-  //         <div className="card-header bg-info">
-  //           <h4>
-  //             {data.id}. {data.judul}
-  //           </h4>
-  //         </div>
-  //         <div className="card-body">
-  //           <p className="card-text paragraf">
-  //             <i> {data.isi}</i>
-  //             <br></br>
-  //             <small className="text-muted">
-  //               <IoIosCalendar /> {moment(data.createdAt).format("DD/MM/YYYY")}:
-  //               someone update with userid
-  //               {token.token.id} {data.name}
-  //             </small>
-  //           </p>
-  //         </div>
-
-  //         {showComments()}
-  //       </div>
-  //     );
-  //   });
-  // };
-
   const showArticle = () => {
     return data.map((artikel, i) => {
       return (
@@ -192,7 +159,7 @@ function Artikel(props) {
               </span>
             </div>
           </div>
-          <div className="post-title">
+          <div className="post-title text-justify">
             <h4>
               {artikel.id}. {artikel.judul}
             </h4>

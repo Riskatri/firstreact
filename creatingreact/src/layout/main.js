@@ -50,10 +50,21 @@ const Main = props => {
             <div>
               <p> Let us be social </p>
               <i>
-                <IoLogoYoutube />
-                <IoLogoTwitter />
-                <IoLogoFacebook />
-                <IoLogoPinterest />
+                <span>
+                  {" "}
+                  <IoLogoYoutube />{" "}
+                </span>
+                <span>
+                  <IoLogoTwitter />{" "}
+                </span>
+                <span>
+                  {" "}
+                  <IoLogoFacebook />
+                </span>
+                <span>
+                  {" "}
+                  <IoLogoPinterest />{" "}
+                </span>
               </i>
             </div>
           </div>

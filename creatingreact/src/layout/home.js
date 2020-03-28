@@ -1,33 +1,23 @@
 import React from "react";
-import mainLogo from "../userProfile/eintein.jpeg";
 import "../userProfile/profile.css";
-import Clock from "../components/clock";
+
 import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div className="blog">
-      <img
-        src={mainLogo}
-        className="rounded-circle "
-        alt="physics"
-        width="400px"
-      />
+    <section className="site-title">
+      <div className="site-background">
+        <h3> Fun Physics</h3>
+        <h1> Amazing Physics in the World</h1>
 
-      <Clock />
-      <h1>
-        <i bg-secondary> Welcome to fun physics </i>
-      </h1>
-      <p> You can create and read article about physics</p>
-      <div class="flex-row">
         <Link to="/login">
-          <button class="btn-primary mr-4">LOGIN</button>
+          <button className="btn"> Login</button>
         </Link>
         <Link to="/register">
-          <button class="btn-danger">REGISTER</button>
+          <button className="btn"> Register</button>
         </Link>
       </div>
-    </div>
+    </section>
   );
 };
 export default Home;

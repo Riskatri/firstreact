@@ -7,10 +7,8 @@ import Login from "./artikel/login";
 import Home from "./layout/home";
 import Users from "./artikel/user";
 import Notfound from "./components/notfound";
-import updateUser from "./artikel/edituser";
 import Artikel from "./artikel/artikel";
 import PostArtikel from "./artikel/postartikel";
-import UpdateArtikel from "./artikel/editartikel";
 import Artikelforuser from "./artikel/artikelforuser";
 import Listartikeluser from "./artikel/listartikelbyuserid";
 import PostComment from "./artikel/postcomment";
@@ -19,7 +17,7 @@ import ShowComment from "./artikel/showcomments";
 import CommentAdmin from "./artikel/showcommentsforadmin";
 import Ambilartikel from "./artikel/artikelID";
 import Listartikel from "./artikel/listartikel";
-import Editkomen from "./artikel/editkomen";
+import Artikel2 from "./artikel/artikel2";
 
 const token = JSON.parse(sessionStorage.getItem("persisted_state_hook:token"));
 const App = props => {
@@ -43,14 +41,10 @@ const App = props => {
                   <Switch>
                     <Route exact path="/" component={Home} />
                     <Route path="/users" component={Users} />
-                    <Route path="/update/users/:id" component={updateUser} />
+
                     <Route path="/articles" component={Artikel} />
                     <Route path="/post/articles/:id" component={PostArtikel} />
-                    <Route
-                      path="/update/articles/:id"
-                      component={UpdateArtikel}
-                    />
-                    <Route path="/edit/comments/:id" component={Editkomen} />
+
                     <Route path="/list/articles" component={Listartikel} />
                     <Route path="/get/comments/:id" component={CommentAdmin} />
                     <Route
@@ -61,6 +55,7 @@ const App = props => {
                       path="/post/comments/:id/:id"
                       component={PostComment}
                     />
+                    <Route path="/get/articles/2" component={Artikel2} />
                     <Route component={Notfound} />
                   </Switch>
                 </>

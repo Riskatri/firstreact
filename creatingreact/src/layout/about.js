@@ -1,18 +1,25 @@
 import React from "react";
 import mainLogo from "../userProfile/fisika.jpg";
-class About extends React.Component {
-  render = () => (
-    <div className="container mt-2">
-      <img src={mainLogo} alt="fisika" />
-      <h1>Fun Physics</h1>
-      <ul>
-        <li>
-          <a href="https://en.wikipedia.org/wiki/Physicist">
-            Physics Scientist
-          </a>
-        </li>
-      </ul>
+import "../userProfile/profile.css";
+
+const Home = () => {
+  return (
+    <div className="blog">
+      <div className="container">
+        <div className="blog-content">
+          <img src={mainLogo} alt="post-1" />
+          <div className="blog-title">
+            <h5>
+              {" "}
+              Physics, science that deals with the structure of matter and the
+              interactions between the fundamental constituents of the
+              observable universe
+            </h5>
+            <button className="btn"> Scientist</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
-}
-export default About;
+};
+export default Home;

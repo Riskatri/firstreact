@@ -9,7 +9,8 @@ function Register() {
     name: "",
     username: "",
     email: "",
-    password: ""
+    password: "",
+    confirm_password: ""
   });
 
   const [status, setStatus] = useState({
@@ -48,7 +49,7 @@ function Register() {
     email: "",
     password: ""
   };
-  const { register, errors, handleSubmit, watch } = useForm({
+  const { register, errors, handleSubmit, getValues } = useForm({
     defaultValues
   });
 
@@ -56,10 +57,12 @@ function Register() {
     return <Redirect to="/login" />;
   }
   return (
-    <div className=" container row-5">
-      <img src={mainLogo} alt="Einstein" width="150px" className="home" />
-      <i> "Lets Register with me"</i>
-      <div className="container col-5">
+    <div className=" container row-5 site-title">
+      <div className="container col-5 blog-content">
+        <h3>
+          <img src={mainLogo} alt="Einstein" width="150px" className="home" />
+        </h3>
+        <h3>REGISTER</h3>
         <div className="card-body">
           <form onSubmit={e => e.preventDefault()}>
             <div class="form-group">
@@ -127,6 +130,21 @@ function Register() {
                 placeholder="password"
               />
               {errors.password && <p>{errors.password.message}</p>}
+            </div>
+            <div class="form-group">
+              <input
+                value={form.confirm_password}
+                type="password"
+                ref={register({
+                  required: "Required",
+                  validate: value => value === getValues().password
+                })}
+                name="confirm_password"
+                onChange={handleChange}
+                class="form-control"
+                placeholder="confirm password"
+              />
+              {errors.password && "password not match"}
             </div>
             <button
               type="submit"

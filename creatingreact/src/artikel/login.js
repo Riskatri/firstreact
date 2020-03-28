@@ -39,11 +39,11 @@ function Login() {
     } catch (err) {
       setStatus(err.response.status);
       if (err.response.status === 404) {
-        alert("Username Not Found");
+        alert("Your account hasbeen blocked");
       } else if (err.response.status === 401) {
         alert("Invalid Password");
-      } else {
-        alert("Your Account Blocked !!");
+      } else if (err.response.status === 400) {
+        alert("Invalid Username");
       }
     }
   };
@@ -67,10 +67,12 @@ function Login() {
     return <Redirect to="/" />;
   } else {
     return (
-      <div className="container row-5">
-        <img src={mainLogo} alt="Einstein" width="150px" className="home" />
-        <i> "Lets Login with me"</i>
-        <div className="container col-5">
+      <div className=" container row-5 site-title">
+        <div className="container col-5 blog-content">
+          <h3>
+            <img src={mainLogo} alt="Einstein" width="150px" className="home" />
+          </h3>
+          <h3>LOGIN</h3>
           <div className="card-body ">
             <form onSubmit={e => e.preventDefault()}>
               <div class="form-group">

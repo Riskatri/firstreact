@@ -64,7 +64,7 @@ function Artikel(props) {
 
   const showArticle = () => {
     return data.map((artikel, i) => {
-      if (artikel.status === true && artikel.id <= 10) {
+      if (artikel.status === true && artikel.id >= 10) {
         return (
           <div key={i} className="post-content">
             <div className="post-image">
@@ -156,14 +156,7 @@ function Artikel(props) {
         </Link>
       </div>
       <div className="site-content">
-        <div className="posts">
-          {showArticle()}{" "}
-          <Link to={`/get/articles/2`}>
-            <button className="post-info ">
-              <i> next </i> <IoMdReturnRight />
-            </button>
-          </Link>
-        </div>
+        <div className="posts">{showArticle()}</div>
 
         <div id="sidebar">
           <IoIosSearch />
