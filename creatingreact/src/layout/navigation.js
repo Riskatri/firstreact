@@ -29,32 +29,52 @@ function Navigation() {
           PHYSICS BLOG
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
+        <Collapse isOpen={isOpen} navbar>
+          <Nav className="mr-auto" navbar>
+            <NavItem>
+              <NavLink to="/login" tag={RRNavLink}>
+                LOGIN
+              </NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
       </Navbar>
     );
   } else if (token.token.admin === true) {
     return (
-      <Navbar color="lnavbar navbar text-right home" light expand="md">
-        <NavbarBrand href={"/"}>blog</NavbarBrand>
+      <Navbar color="lnavbar navbar bg-dark " light expand="md">
+        <NavbarBrand href={"/"} className="text-light">
+          blog
+        </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink to="/users" tag={RRNavLink}>
+              <NavLink to="/users" tag={RRNavLink} className="text-light">
                 user
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/articles" tag={RRNavLink}>
+              <NavLink to="/articles" tag={RRNavLink} className="text-light">
                 articles
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/list/articles" tag={RRNavLink}>
+              <NavLink
+                to="/list/articles"
+                tag={RRNavLink}
+                className="text-light"
+              >
                 status articles
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink onClick={logout} to="/login" tag={RRNavLink}>
+              <NavLink
+                onClick={logout}
+                to="/login"
+                tag={RRNavLink}
+                className="text-light"
+              >
                 Logout
               </NavLink>
             </NavItem>
@@ -64,18 +84,23 @@ function Navigation() {
     );
   } else if (token.token.admin === false) {
     return (
-      <Navbar color="lnavbar navbar-right home" light expand="md">
+      <Navbar color="lnavbar navbar-light bg-dark " light expand="md">
         <NavbarBrand href={"/"}>blog</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav className="mr-auto " navbar>
             <NavItem>
-              <NavLink to="/articles" tag={RRNavLink}>
+              <NavLink to="/articles" tag={RRNavLink} className="text-light">
                 articles
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink onClick={logout} to="/login" tag={RRNavLink}>
+              <NavLink
+                onClick={logout}
+                to="/login"
+                tag={RRNavLink}
+                className="text-light"
+              >
                 Logout
               </NavLink>
             </NavItem>
@@ -86,12 +111,18 @@ function Navigation() {
   }
   return (
     <Navbar color="lnavbar navbar-dark bg-dark" light expand="md">
-      <NavbarBrand href={"/"}>Blog</NavbarBrand>
+      <NavbarBrand href={"/"} className="text-light">
+        Blog
+      </NavbarBrand>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
         <Nav className="mr-auto" navbar>
           <NavItem>
-            <NavLink to="/guess/articles" tag={RRNavLink}>
+            <NavLink
+              to="/guess/articles"
+              tag={RRNavLink}
+              className="text-light"
+            >
               articles
             </NavLink>
           </NavItem>

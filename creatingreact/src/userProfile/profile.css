@@ -250,7 +250,7 @@ footer.footer .follow div i {
 .site-title h1,
 h3 {
   margin: 0.3rem;
-  margin-bottom: 5rem;
+  margin-bottom: 1rem;
 }
 
 button.btn {
@@ -259,6 +259,23 @@ button.btn {
   padding: 0.5rem 2rem;
   background-color: skyblue;
   margin: 0 0.5rem;
+}
+
+button.btn2 {
+  border: none;
+  border-radius: 2rem;
+  background-color: red;
+}
+button.btn3 {
+  border: none;
+  border-radius: 2rem;
+  background-color: green;
+}
+
+button.btn4 {
+  border: none;
+  border-radius: 2rem;
+  background-color: skyblue;
 }
 
 button.post-info {
@@ -302,4 +319,8 @@ main .blog-post,
   width: 80%;
   margin: 3rem 2rem;
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+}
+
+.about {
+  font-size: 15px;
 }

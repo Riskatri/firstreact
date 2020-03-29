@@ -32,7 +32,6 @@ const Main = props => {
             <div className="form-element">
               <input type="text" placeholder="Email" />
               <span>
-                {" "}
                 <IoMdReturnRight />
               </span>
             </div>
@@ -51,24 +50,22 @@ const Main = props => {
               <p> Let us be social </p>
               <i>
                 <span>
-                  {" "}
-                  <IoLogoYoutube />{" "}
+                  <IoLogoYoutube />
                 </span>
                 <span>
-                  <IoLogoTwitter />{" "}
+                  <IoLogoTwitter />
                 </span>
                 <span>
-                  {" "}
                   <IoLogoFacebook />
                 </span>
                 <span>
-                  {" "}
-                  <IoLogoPinterest />{" "}
+                  <IoLogoPinterest />
                 </span>
               </i>
             </div>
           </div>
         </div>
+
         <div className="text-center text-white">
           copyright &copy; All Right Reserved by Riska
         </div>

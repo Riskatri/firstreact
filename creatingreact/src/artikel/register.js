@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import mainLogo from "../userProfile/einstein.jpeg";
 
 function Register() {
@@ -57,7 +57,7 @@ function Register() {
     return <Redirect to="/login" />;
   }
   return (
-    <div className=" container row-5 site-title">
+    <div className=" container row-5  site-title">
       <div className="container col-5 blog-content">
         <h3>
           <img src={mainLogo} alt="Einstein" width="150px" className="home" />

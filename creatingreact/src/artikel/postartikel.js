@@ -90,9 +90,10 @@
 // }
 // export default PostArtikel;
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FormGroup } from "reactstrap";
+import CKEditor from "ckeditor4-react";
 
 function PostUsingHook(props) {
   const [form, setValues] = useState({
@@ -155,6 +156,13 @@ function PostUsingHook(props) {
     });
   };
 
+  function customHandler(evt) {
+    console.log(evt);
+    setValues({
+      isi: evt.target.value
+    });
+  }
+
   const updateFile = e => {
     setValues({
       ...form,
@@ -205,13 +213,22 @@ function PostUsingHook(props) {
 
         <div class="form-group">
           <label for="isi">Artciles</label>
-          <textarea
+          {/* <CKEditor
+            data="<p>Editor's content</p>"
+            config={{
+              toolbar: [["Bold"]]
+            }}
+          /> */}
+          <CKEditor
             name="isi"
             value={form.isi}
-            class="form-control"
+            // class="form-control"
             rows="15"
-            onChange={updateField}
-          ></textarea>
+            onChange={customHandler}
+            config={{
+              toolbar: [["Bold"]]
+            }}
+          />
         </div>
         {/* </div> */}
 

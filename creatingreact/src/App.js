@@ -18,6 +18,7 @@ import CommentAdmin from "./artikel/showcommentsforadmin";
 import Ambilartikel from "./artikel/artikelID";
 import Listartikel from "./artikel/listartikel";
 import Artikel2 from "./artikel/artikel2";
+import Homeuseradmin from "./artikel/homeuseradmin";
 
 const token = JSON.parse(sessionStorage.getItem("persisted_state_hook:token"));
 const App = props => {
@@ -39,7 +40,7 @@ const App = props => {
               return (
                 <>
                   <Switch>
-                    <Route exact path="/" component={Home} />
+                    <Route exact path="/" component={Homeuseradmin} />
                     <Route path="/users" component={Users} />
 
                     <Route path="/articles" component={Artikel} />
@@ -63,7 +64,7 @@ const App = props => {
             } else if (token.token.admin === false) {
               return (
                 <Switch>
-                  <Route exact path="/" component={Home} />
+                  <Route exact path="/" component={Homeuseradmin} />
                   <Route path="/articles" component={Artikelforuser} />
                   <Route path="/post/articles/:id" component={PostArtikel} />
                   <Route path="/get/articles/:id" component={Listartikeluser} />
