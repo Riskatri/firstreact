@@ -10,7 +10,7 @@ import {
   IoMdChatbubbles
 } from "react-icons/io";
 import moment from "moment";
-
+import ReactHtmlParser from "react-html-parser";
 import "../userProfile/profile.css";
 
 function Artikel(props) {
@@ -97,7 +97,7 @@ function Artikel(props) {
               <h4>
                 {artikel.id}. {artikel.judul}
               </h4>
-              <p> {artikel.isi.substr(0, 250) + " ..."}</p> <br />
+              <p> {ReactHtmlParser(artikel.isi.substr(0, 250) + " ...")}</p>{" "}
               <Link to={`/ambil/articles/${artikel.id}`}>
                 <div className="text-center primary">
                   <i> show more </i> <IoMdReturnRight />
@@ -157,10 +157,15 @@ function Artikel(props) {
       </div>
       <div className="site-content">
         <div className="posts">
-          {showArticle()}{" "}
+          {showArticle()} <IoMdReturnRight />
+          <Link to={`/articles`}>
+            <button className="bg-dark rounded-circle text-light  ">
+              <i> 1 </i>
+            </button>
+          </Link>
           <Link to={`/get/articles/2`}>
-            <button className="post-info ">
-              <i> next </i> <IoMdReturnRight />
+            <button className="bg-dark rounded-circle text-light  ">
+              <i> 2 </i>
             </button>
           </Link>
         </div>
@@ -173,12 +178,12 @@ function Artikel(props) {
             value={res}
             onChange={onchange}
           />
-          <h2>What is an All About Physics? </h2>
+          <h2>What is a Fun Physics? </h2>
           <p>
-            all about physics is a web to understand physics phenomenon,and
-            knowledge about scientist{" "}
+            Fun physics is a web to understand physics phenomenon, knowledge
+            about scientist and discuss anything about physics
           </p>
-          <h2> artikel berdasarkan kategori </h2>
+          <h2> You can create article about: </h2>
           <ul>
             <li> Scientist </li>
             <li> phenomenon </li>

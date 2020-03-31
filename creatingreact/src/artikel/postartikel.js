@@ -93,7 +93,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FormGroup } from "reactstrap";
-import CKEditor from "ckeditor4-react";
+// import CKEditor from "ckeditor4-react";
+import CKEditor from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import ReactHtmlParser from "react-html-parser";
 
 function PostUsingHook(props) {
   const [form, setValues] = useState({
@@ -156,13 +159,11 @@ function PostUsingHook(props) {
     });
   };
 
-  function customHandler(evt) {
-    console.log(evt);
+  const handleOnChange = data => {
     setValues({
-      isi: evt.target.value
+      isi: data.getData()
     });
-  }
-
+  };
   const updateFile = e => {
     setValues({
       ...form,
@@ -212,23 +213,22 @@ function PostUsingHook(props) {
         <br></br>
 
         <div class="form-group">
-          <label for="isi">Artciles</label>
-          {/* <CKEditor
-            data="<p>Editor's content</p>"
-            config={{
-              toolbar: [["Bold"]]
-            }}
-          /> */}
+          <label for="isi">Article</label>
           <CKEditor
-            name="isi"
-            value={form.isi}
-            // class="form-control"
-            rows="15"
-            onChange={customHandler}
-            config={{
-              toolbar: [["Bold"]]
+            editor={ClassicEditor}
+            onChange={(event, editor) => {
+              handleOnChange(editor);
             }}
           />
+          <div className="editor"> {ReactHtmlParser(form.isi)}</div>
+          {/* <textarea
+            name="isi"
+            value={form.isi}
+            class="form-control"
+            rows="15"
+            onChange={updateField}
+            editor={ClassicEditor}
+          /> */}
         </div>
         {/* </div> */}
 

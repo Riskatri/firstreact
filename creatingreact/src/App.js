@@ -66,6 +66,7 @@ const App = props => {
                 <Switch>
                   <Route exact path="/" component={Homeuseradmin} />
                   <Route path="/articles" component={Artikelforuser} />
+                  <Route path="/get/articles/2" component={Artikel2} />
                   <Route path="/post/articles/:id" component={PostArtikel} />
                   <Route path="/get/articles/:id" component={Listartikeluser} />
                   <Route path="/ambil/articles/:id" component={Ambilartikel} />

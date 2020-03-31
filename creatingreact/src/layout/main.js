@@ -22,8 +22,8 @@ const Main = props => {
           <div className="about-us">
             <h2> About us</h2>
             <p>
-              all about physics is a web to understand physics phenomenon,and
-              knowledge about scientist
+              Fun physics is a web to understand physics phenomenon, knowledge
+              about scientist and discuss anything about physics
             </p>
           </div>
           <div className="newsletter">
@@ -51,14 +51,8 @@ const Main = props => {
               <i>
                 <span>
                   <IoLogoYoutube />
-                </span>
-                <span>
                   <IoLogoTwitter />
-                </span>
-                <span>
                   <IoLogoFacebook />
-                </span>
-                <span>
                   <IoLogoPinterest />
                 </span>
               </i>

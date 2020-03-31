@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import { IoIosCalendar, IoMdTrash, IoMdChatbubbles } from "react-icons/io";
 import moment from "moment";
 import mainLogo from "../userProfile/einstein.jpeg";
-import mainLogo2 from "../userProfile/prof.png";
 import "../userProfile/profile.css";
+import ReactHtmlParser from "react-html-parser";
 
 function Artikel(props) {
   const [data, setData] = useState([]);
@@ -163,7 +163,7 @@ function Artikel(props) {
             <h4>
               {artikel.id}. {artikel.judul}
             </h4>
-            <p> {artikel.isi}</p> <br />
+            <p> {ReactHtmlParser(artikel.isi.substr(0, 250) + " ...")}</p>{" "}
           </div>
           {showComments()}
         </div>

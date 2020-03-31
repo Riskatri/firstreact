@@ -120,7 +120,7 @@ function User() {
     <div>
       <h3 className="container title bg-light">List user </h3>
       <div>
-        <table className="container table table-striped table-dark">
+        <table className="container table table-striped table-dark text-center">
           <tr>
             <th>ID</th>
             <th>Username</th>

@@ -3,6 +3,7 @@ import axios from "axios";
 import { Redirect } from "react-router-dom";
 import moment from "moment";
 import { IoIosCalendar } from "react-icons/io";
+import ReactHtmlParser from "react-html-parser";
 
 function Artikel(props) {
   const [data, setData] = useState([]);
@@ -64,7 +65,7 @@ function Artikel(props) {
             <h4>
               {artikel.id}. {artikel.judul}
             </h4>
-            <p> {artikel.isi}</p> <br />
+            <p> {ReactHtmlParser(artikel.isi)}</p>{" "}
           </div>
         </div>
       );

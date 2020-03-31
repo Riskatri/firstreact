@@ -278,13 +278,13 @@ button.btn4 {
   background-color: skyblue;
 }
 
-button.post-info {
+.angka {
   background: skyblue;
   padding: 0.5rem;
 
   bottom: 0%;
   left: 25vw;
-  border-radius: 2rem;
+
   width: 110px;
   text-align: center;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
