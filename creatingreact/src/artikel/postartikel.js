@@ -94,8 +94,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FormGroup } from "reactstrap";
 // import CKEditor from "ckeditor4-react";
-import CKEditor from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+// import CKEditor from "@ckeditor/ckeditor5-react";
+// import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import ReactHtmlParser from "react-html-parser";
 
 function PostUsingHook(props) {
@@ -159,11 +159,18 @@ function PostUsingHook(props) {
     });
   };
 
-  const handleOnChange = data => {
-    setValues({
-      isi: data.getData()
-    });
-  };
+  // const handleOnChange = data => {
+  //   setValues({
+  //     isi: data.getData()
+  //   });
+  // };
+
+  // const handleOnChange2 = data => {
+  //   setValues({
+  //     judul: data.getData()
+  //   });
+  // };
+
   const updateFile = e => {
     setValues({
       ...form,
@@ -209,26 +216,27 @@ function PostUsingHook(props) {
             onChange={updateField}
             placeholder="title"
           />
+          <div className="editor"> {ReactHtmlParser(form.judul)}</div>
         </div>
         <br></br>
 
         <div class="form-group">
           <label for="isi">Article</label>
-          <CKEditor
+          {/* <CKEditor
             editor={ClassicEditor}
             onChange={(event, editor) => {
               handleOnChange(editor);
             }}
           />
-          <div className="editor"> {ReactHtmlParser(form.isi)}</div>
-          {/* <textarea
+          <div className="editor"> {ReactHtmlParser(form.isi)}</div> */}
+          <textarea
             name="isi"
             value={form.isi}
             class="form-control"
             rows="15"
             onChange={updateField}
-            editor={ClassicEditor}
-          /> */}
+            type="text"
+          />
         </div>
         {/* </div> */}
 

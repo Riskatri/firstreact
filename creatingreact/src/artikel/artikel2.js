@@ -10,7 +10,7 @@ import {
   IoMdChatbubbles
 } from "react-icons/io";
 import moment from "moment";
-
+import ReactHtmlParser from "react-html-parser";
 import "../userProfile/profile.css";
 
 function Artikel(props) {
@@ -97,7 +97,8 @@ function Artikel(props) {
               <h4>
                 {artikel.id}. {artikel.judul}
               </h4>
-              <p> {artikel.isi.substr(0, 250) + " ..."}</p> <br />
+              <p> {ReactHtmlParser(artikel.isi.substr(0, 250) + " ...")}</p>{" "}
+              <br />
               <Link to={`/ambil/articles/${artikel.id}`}>
                 <div className="text-center primary">
                   <i> show more </i> <IoMdReturnRight />
